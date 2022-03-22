@@ -2,30 +2,21 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
-class User extends Model {}
+class Business extends Model {}
 
-User.init(
+Business.init(
     {
-        // id
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             primaryKey: true,
+            allowNull: false,
             autoIncrement: true
         },
-        first_name: {
+        b_username: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        last_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        username: {
-            types: DataTypes.STRING,
-            allowNull: false
-        },
-        email: {
+        b_email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
@@ -33,18 +24,18 @@ User.init(
                 isEmail: true
             }
         },
-        password: {
+        b_password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [6]
             }
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [10]
+        }, 
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
             }
         },
         impair_id: {
@@ -53,29 +44,29 @@ User.init(
                 model: 'impair',
                 key: 'id'
             }
+        }, 
+        b_description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [10]
+            }
         },
-        picture_url: {
+        logo_url: {
             type: DataTypes.STRING,
             allowNull: true,
             validate: {
                 isUrl: true
             }
-        },
-        suggestion_id: {
-            type: DataTypes. INTEGER,
-            references: {
-                model: 'suggestion',
-                key: 'id'
-            }
         }
     },
-    {   
+    {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user'
+        modelName: 'business'
     }
 );
 
-module.exports = User;
+module.exports = Business;
