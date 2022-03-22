@@ -12,6 +12,10 @@ Business.init(
             allowNull: false,
             autoIncrement: true
         },
+        b_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         b_username: {
             type: DataTypes.STRING,
             allowNull: false
