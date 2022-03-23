@@ -10,6 +10,13 @@ Suggestion.init(
             primaryKey: true,
             autoIncrement: true
         },
+        suggestion_text: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
         // user_id: {
         //     type: DataTypes.INTEGER,
         //     allowNull: false,
@@ -25,13 +32,6 @@ Suggestion.init(
         //         key: 'id'
         //     }
         // },
-        suggestion_text: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        }
     },
     {
         sequelize,

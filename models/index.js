@@ -7,7 +7,7 @@ const Rate = require('./Rate');
 // Associations
 User.hasMany(Impair);
 Impair.belongsTo(User);
-Business.hasMany(Impair);
+
 
 
 

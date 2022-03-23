@@ -59,13 +59,6 @@ User.init(
                 isUrl: true
             }
         },
-        // suggestion_id: {
-        //     type: DataTypes. INTEGER,
-        //     references: {
-        //         model: 'suggestion',
-        //         key: 'id'
-        //     }
-        // }
     },
     {
         hooks: {
