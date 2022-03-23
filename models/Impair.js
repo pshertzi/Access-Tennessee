@@ -14,6 +14,14 @@ Impair.init(
         impairment: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        user_id: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         }
     },
     {

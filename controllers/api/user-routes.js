@@ -1,10 +1,16 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Impair } = require('../../models');
 
 // GET all users
 router.get('/', (req, res) => {
     User.findAll({
-        attributes: { exclude: ['password'] }
+        attributes: { exclude: ['password'] },
+        include: [
+            {
+                model: Impair,
+                attributes: ['impairment']
+            }
+        ]
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -54,7 +60,8 @@ router.post('/login', (req, res) => {
         where: {
             username: req.body.username
         }
-    }).then(dbUserData => {
+    })
+    .then(dbUserData => {
         if (!dbUserData) {
             res.status(400).json({ message: 'No user with that username!' });
             return;

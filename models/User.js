@@ -52,13 +52,6 @@ User.init(
                 len: [10]
             }
         },
-        // impair_id: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //         model: 'impair',
-        //         key: 'id'
-        //     }
-        // },
         picture_url: {
             type: DataTypes.STRING,
             allowNull: true,
