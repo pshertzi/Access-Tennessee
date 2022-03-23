@@ -9,7 +9,6 @@ const userData = [
         password: 'thejohnhayes',
         description: 'My name is John Hayes and I am hearing impaired. I love to dine out and spend time with friends!',
         impair_id: 1,
-        suggestion_id: 1
     },
     {
         first_name: 'Ronnie',
@@ -19,7 +18,7 @@ const userData = [
         password: 'ronnie_pen',
         description: 'I love to go to concerts and listen to music!',
         impair_id: 2,
-        
+
     },
     {
         first_name: 'Vanessa',
