@@ -42,13 +42,6 @@ Business.init(
         //         key: 'id'
         //     }
         // },
-        // impair_id: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //         model: 'impair',
-        //         key: 'id'
-        //     }
-        // }, 
         b_description: {
             type: DataTypes.STRING,
             allowNull: false,

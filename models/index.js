@@ -5,7 +5,11 @@ const Business = require('./Business');
 const Rate = require('./Rate');
 
 // Associations
-User.hasMany(Impair)  
+User.hasMany(Impair);
+Impair.belongsTo(User);
+Business.hasMany(Impair);
+
+
 
 
 module.exports = { User, Impair, Suggestion, Business, Rate };

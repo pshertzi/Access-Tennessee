@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const req = require('express/lib/request');
-const { Business } = require('../../models');
+const { Business, Impair } = require('../../models');
 
 // GET all businesses
 router.get('/', (req, res) => {

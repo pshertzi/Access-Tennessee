@@ -2,25 +2,32 @@ const { Impair } = require('../models');
 
 const impairData = [
     {
-        impairment: 'Hearing Impairment'
+        impairment: 'Hearing Impairment',
+        user_id: 1
     },
     {
-        impairment: 'Vision Impairment'
+        impairment: 'Vision Impairment',
+        user_id: 2
     },
     {
-        impairment: 'Mobility Impairment'
+        impairment: 'Mobility Impairment',
+        user_id: 3
     },
     {
-        impairment: 'Neurological Impairment'
+        impairment: 'Neurological Impairment',
+        user_id: 4
     },
     {
-        impairment: 'Cognitive Impairment'
+        impairment: 'Cognitive Impairment',
+        user_id: 5
     },
     {
-        impairment: 'Medical'
+        impairment: 'Medical',
+        user_id: 6
     },
     {
-        impairment: 'Psychological'
+        impairment: 'Psychological',
+        user_id: 7
     }
 ]
 
