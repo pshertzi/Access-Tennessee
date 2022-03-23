@@ -1,13 +1,32 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const exphbs = require('express-handlebars');
 const path = require('path');
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+const express = require('express');
+const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser'); //added for nodemail
+const nodemailer = require('nodemailer'); //added for nodemail
+require('dotenv').config(); //added for nodemail
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-// View engine setup
+const sequelize = require('./config/connection');
+
+const hbs = exphbs.create({});
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(require('./controllers'));
+
+app.listen(PORT, () => {
+    console.log(`You are now connected to port ${PORT}!`);
+  });
+
+
+// View engine setup for nodemail
 
 app.set('view engine', 'html');
 app.engine('handlebars', require('exphbs').__express);
@@ -69,5 +88,6 @@ app.post('/send', (req, res) => {
       res.render('contact', {msg:'Email has been sent.'});
   });
   });
+  
 
 app.listen(3000, () => console.log('Server started...'));
