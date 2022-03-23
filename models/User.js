@@ -13,16 +13,16 @@ User.init(
             primaryKey: true,
             autoIncrement: true
         },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         first_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
         last_name: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        username: {
-            types: DataTypes.STRING,
             allowNull: false
         },
         email: {
@@ -47,13 +47,13 @@ User.init(
                 len: [10]
             }
         },
-        impair_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'impair',
-                key: 'id'
-            }
-        },
+        // impair_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'impair',
+        //         key: 'id'
+        //     }
+        // },
         picture_url: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -61,13 +61,13 @@ User.init(
                 isUrl: true
             }
         },
-        suggestion_id: {
-            type: DataTypes. INTEGER,
-            references: {
-                model: 'suggestion',
-                key: 'id'
-            }
-        }
+        // suggestion_id: {
+        //     type: DataTypes. INTEGER,
+        //     references: {
+        //         model: 'suggestion',
+        //         key: 'id'
+        //     }
+        // }
     },
     {   
         sequelize,

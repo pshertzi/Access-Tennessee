@@ -10,21 +10,21 @@ Suggestion.init(
             primaryKey: true,
             autoIncrement: true
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        business_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'business',
-                key: 'id'
-            }
-        },
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id'
+        //     }
+        // },
+        // business_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'business',
+        //         key: 'id'
+        //     }
+        // },
         suggestion_text: {
             type: DataTypes.STRING,
             allowNull: false,

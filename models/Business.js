@@ -35,20 +35,20 @@ Business.init(
                 len: [6]
             }
         }, 
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        impair_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'impair',
-                key: 'id'
-            }
-        }, 
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id'
+        //     }
+        // },
+        // impair_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'impair',
+        //         key: 'id'
+        //     }
+        // }, 
         b_description: {
             type: DataTypes.STRING,
             allowNull: false,
