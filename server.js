@@ -1,14 +1,14 @@
 //These are for nodemailer requirements
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const path = require('path');
 const nodemailer = require('nodemailer');
 
 const app = express();
 
 // View engine setup
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
 
 // Static folder
@@ -41,8 +41,8 @@ app.post('/send', (req, res) => {
     port: 2525,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'ca2765889d2d23', // generated ethereal user
-        pass: '0b9ea155e5e3cb'  // generated ethereal password
+        user: 'ca2765889d2d23', // generated ethereal user // Mailtrap
+        pass: '0b9ea155e5e3cb'  // generated ethereal password // Mailtrap
     },
     tls:{
       rejectUnauthorized:false
@@ -51,10 +51,10 @@ app.post('/send', (req, res) => {
 
   // setup email data with unicode symbols
   let mailOptions = {
-      from: '"Access Tennessee" <your@email.com>', // sender address
+      from: '"Access Tennessee" <tanyaleedev@gmail.com', // sender address
       to: 'RECEIVEREMAILS', // list of receivers
       subject: 'AT Contact Receipt', // Subject line
-      text: 'Hello world?', // plain text body
+      text: 'Submission Completed', // plain text body
       html: output // html body
   };
 
@@ -66,7 +66,7 @@ app.post('/send', (req, res) => {
       console.log('Message sent: %s', info.messageId);   
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('contact', {msg:'Email has been sent'});
+      res.render('contact', {msg:'Email has been sent!'});
   });
   });
 
