@@ -1,6 +1,4 @@
-/* Description: Master CSS file */
-
-/*****************************************
+/*
 Table Of Contents:
 
 - General Styles
@@ -34,6 +32,16 @@ Colors:
 /**************************/
 /*     General Styles     */
 /**************************/
+
+:root {
+	--light-blue: #4ECDDA;
+	--white: #FFFFFF;
+	--orange: #F1441C;
+	--yellow: #FEA705;
+	--dark-blue: #0933A6;
+	--main-dark-blue: #1b1e7b;
+}
+
 body,
 html {
     width: 100%;
@@ -46,18 +54,21 @@ body, p {
 }
 
 h1 {
-	color: #333333;
+	color: var(--light-blue);
 	font: 600 2.5rem/3.25rem "Poppins", sans-serif;
+	
 }
 
 h2 {
-	color: #1b1e7b;
+	color: var(--orange);
 	font: 600 2.125rem/2.75rem "Poppins", sans-serif;
+	font-size: 40px;
 }
 
 h3 {
-	color: #1b1e7b;
+	color: var(--yellow);
 	font: 600 1.75rem/2.375rem "Poppins", sans-serif;
+	font-size: 50px;;
 }
 
 h4 {
@@ -542,6 +553,8 @@ input[type='checkbox'] {
 	margin-bottom: 1.375rem;
 	color: #ffffff;
 }
+
+
 
 .header .p-large {
 	margin-bottom: 2rem;

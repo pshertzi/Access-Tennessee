@@ -1,5 +1,4 @@
-/* Description: Custom JS file */
-
+//JavaScript for the functionality of the Access Tennessee app
 
 (function($) {
     "use strict"; 
