@@ -2,7 +2,6 @@ const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
-const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser'); //added for nodemail
 const nodemailer = require('nodemailer'); //added for nodemail
@@ -16,8 +15,6 @@ app.use(routes);
 
 
 
-const sequelize = require('./config/connection');
-
 const hbs = exphbs.create({});
 
 app.engine('handlebars', hbs.engine);
@@ -30,12 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers'));
 
 // View engine setup for nodemail
-
-app.set('view engine', 'html');
-app.engine('handlebars', require('exphbs').__express);
-
-// Static folder
-app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Body Parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
