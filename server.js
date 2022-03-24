@@ -37,6 +37,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/send', (req, res) => {
+  console.log(req.body)
   const output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>
@@ -45,22 +46,30 @@ app.post('/send', (req, res) => {
       <li>Email: ${req.body.email}</li>
     </ul>
     <h3>Message</h3>
-    <p>${req.body.message}</p>
+    <p>${req.body.msg}</p>
   `;
 
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: 'mail.google.com',
-    port: 587,
-    secure: false, // true for 465, false for other ports
+  var transporter = nodemailer.createTransport({
+    host: "smtp.mailtrap.io",
+    port: 2525,
     auth: {
-        user: 'tanyaleedev@gmail.com', // generated ethereal user
-        pass: process.env.E_PASSWORD  // generated ethereal password
-    },
-    tls:{
-      rejectUnauthorized:false
+      user: "ca2765889d2d23",
+      pass: "0b9ea155e5e3cb"
     }
   });
+  // create reusable transporter object using the default SMTP transport
+  // let transporter = nodemailer.createTransport({
+  //   host: 'mail.google.com',
+  //   port: 587,
+  //   secure: false, // true for 465, false for other ports
+  //   auth: {
+  //       user: 'tanyaleedev@gmail.com', // generated ethereal user
+  //       pass: process.env.E_PASSWORD  // generated ethereal password
+  //   },
+  //   tls:{
+  //     rejectUnauthorized:false
+  //   }
+  // });
 
   // setup email data with unicode symbols
   let mailOptions = {

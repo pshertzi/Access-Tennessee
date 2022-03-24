@@ -1,9 +1,9 @@
 /* Description: Custom JS file */
 
 
-(function($) {
-    "use strict"; 
-	
+// (function($) {
+//     "use strict"; 
+	console.log("test")
     /* Navbar Scripts */
     // jQuery to collapse the navbar on scroll
     $(window).on('scroll load', function() {
@@ -121,13 +121,31 @@
 		$(this).blur();
 	});
 
-})(jQuery);
+// })(jQuery);
 
-$('#btn-c').click(function (e){
+$('#btn-c').click(async function (e){
 	e.preventDefault()
 	let name = $('#cname').val()
 	let email = $('#cemail').val()
 	let msg = $('#cmessage').val()
 
 console.log(name,email,msg)
+const response = await fetch(`/send`, {
+    method: 'POST',
+    body: JSON.stringify({
+      name,
+      email,
+	  msg
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (response.ok) { 
+	  alert("sucess!");
+    // document.location.replace('/dashboard');
+  } else {
+    alert(response.statusText);
+  }
 })
