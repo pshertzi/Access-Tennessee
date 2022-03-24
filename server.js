@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.render('contact');
+  res.sendFile(path.join(__dirname, 'public/landing-page/index.html'))
 });
 
 app.post('/send', (req, res) => {
