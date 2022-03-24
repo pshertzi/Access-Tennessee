@@ -35,13 +35,6 @@ Business.init(
                 len: [6]
             }
         }, 
-        // user_id: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //         model: 'user',
-        //         key: 'id'
-        //     }
-        // },
         b_description: {
             type: DataTypes.STRING,
             allowNull: false,
