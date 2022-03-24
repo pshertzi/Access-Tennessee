@@ -35,7 +35,23 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['b_password'] },
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Impair,
+                attributes: ['impairment']
+            },
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at'],
+                include: [
+                    {
+                        model: User,
+                        attributes: ['username']
+                    }
+                ]
+            }
+        ]
     })
     .then(dbBusinessData => {
         if(!dbBusinessData) {

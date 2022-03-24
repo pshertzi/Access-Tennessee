@@ -32,7 +32,21 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Impair,
+                attributes: ['impairment']
+            },
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at'],
+                include: {
+                    model: Business,
+                    attributes: ['b_name']
+                }
+            }
+        ]
     })
     .then(dbUserData => {
         if(!dbUserData) {
@@ -66,7 +80,7 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
-            username: req.body.username
+            email: req.body.email
         }
     })
     .then(dbUserData => {
