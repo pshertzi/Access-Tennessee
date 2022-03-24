@@ -2,7 +2,12 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
-class User extends Model {}
+class User extends Model {
+    // check password
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password);
+    }
+}
 
 User.init(
     {
@@ -13,16 +18,16 @@ User.init(
             primaryKey: true,
             autoIncrement: true
         },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         first_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
         last_name: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        username: {
-            types: DataTypes.STRING,
             allowNull: false
         },
         email: {
@@ -47,13 +52,6 @@ User.init(
                 len: [10]
             }
         },
-        impair_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'impair',
-                key: 'id'
-            }
-        },
         picture_url: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -61,15 +59,19 @@ User.init(
                 isUrl: true
             }
         },
-        suggestion_id: {
-            type: DataTypes. INTEGER,
-            references: {
-                model: 'suggestion',
-                key: 'id'
-            }
-        }
     },
-    {   
+    {
+        hooks: {
+            // * bulkCreated data and new user data not being hashed * Not able to login until updated user
+            async beforeCreate(newUserData) {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
+            },
+            async beforeUpdate(updatedUserData) {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+            }
+        }, 
         sequelize,
         timestamps: false,
         freezeTableName: true,
