@@ -121,3 +121,13 @@
 	});
 
 })(jQuery);
+
+$('#btn-c').click(function (e){
+	e.preventDefault()
+	let name = $('#cname').val()
+	let email = $('#cemail').val()
+	let msg = $('#cmessage').val()
+
+console.log(name,email,msg)
+})
+
