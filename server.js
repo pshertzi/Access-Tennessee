@@ -1,3 +1,6 @@
+const express = require('express');
+const routes = require('./controllers');
+const sequelize = require('./config/connection');
 const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
@@ -7,6 +10,11 @@ require('dotenv').config(); //added for nodemail
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// turn on routes
+app.use(routes);
+
+
 
 const sequelize = require('./config/connection');
 
@@ -20,11 +28,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./controllers'));
-
-app.listen(PORT, () => {
-    console.log(`You are now connected to port ${PORT}!`);
-  });
-
 
 // View engine setup for nodemail
 
@@ -89,5 +92,7 @@ app.post('/send', (req, res) => {
   });
   });
   
-
-app.listen(3000, () => console.log('Server started...'));
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log(`Now listening on ${PORT}!`));
+});
