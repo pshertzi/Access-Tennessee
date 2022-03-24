@@ -1,11 +1,27 @@
 const router = require('express').Router();
 const req = require('express/lib/request');
-const { Business, Impair } = require('../../models');
+const { Business, Impair, Suggestion, User } = require('../../models');
 
 // GET all businesses
 router.get('/', (req, res) => {
     Business.findAll({
-        attributes: { exclude: ['password'] }
+        attributes: { exclude: ['password'] },
+        include: [
+            {
+                model: Impair,
+                attributes: ['impairment']
+            },
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at'],
+                include: [
+                    {
+                        model: User,
+                        attributes: ['username']
+                    }
+                ]
+            }
+        ]
     })
     .then(dbBusinessData => res.json(dbBusinessData))
     .catch(err => {

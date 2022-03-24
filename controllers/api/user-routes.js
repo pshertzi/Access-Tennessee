@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Impair, Suggestion } = require('../../models');
+const { User, Impair, Suggestion, Business } = require('../../models');
 
 // GET all users
 router.get('/', (req, res) => {
@@ -10,10 +10,14 @@ router.get('/', (req, res) => {
                 model: Impair,
                 attributes: ['impairment']
             },
-            // {
-            //     model: Suggestion,
-            //     attributes: ['suggestion_text', 'created_at']
-            // }
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at'],
+                include: {
+                    model: Business,
+                    attributes: ['b_name']
+                }
+            }
         ]
     })
     .then(dbUserData => res.json(dbUserData))

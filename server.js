@@ -2,7 +2,6 @@ const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
-const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser'); //added for nodemail
 const nodemailer = require('nodemailer'); //added for nodemail
@@ -13,10 +12,6 @@ const PORT = process.env.PORT || 3001;
 
 // turn on routes
 app.use(routes);
-
-
-
-const sequelize = require('./config/connection');
 
 const hbs = exphbs.create({});
 
