@@ -46,6 +46,10 @@
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+    <label for="picture"><b>Select Profile Picture:</b></label>
+    <input id="image" type="file" name="profile_photo" placeholder="Photo" required="" capture>
+    
     
     <h6>Types of impairments:</h6>
     <label for="hearing">Hearing Impairment </label>
@@ -76,7 +80,15 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label>
-      
+
+      <form action="">
+        <p>Please select the type of account:</p>
+      <input type="radio" id="individual_profile" name="individual_profile" value="individual">
+      <label for="individual_profile">Individual Profile</label><br>
+      <input type="radio" id="business_profile" name="business_profile" value="business">
+      <label for="business_profile">Business Profile</label> <br>
+    
+      </form>
 
     <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
     <label>
