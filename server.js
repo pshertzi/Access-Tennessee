@@ -5,8 +5,9 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser'); //added for nodemail
 const nodemailer = require('nodemailer'); //added for nodemail
+const multiparty = require("multiparty"); // added for nodemail
 require('dotenv').config(); //added for nodemail
-
+const Contact = require("./models/contacts.js");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -38,6 +39,8 @@ app.get('/', (req, res) => {
 
 app.post('/send', (req, res) => {
   console.log(req.body)
+  Contact.create({c_name:req.body.name, c_email:req.body.email, c_msg:req.body.msg})
+  .then(dbUserData => console.log(dbUserData))
   const output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>
@@ -74,7 +77,7 @@ app.post('/send', (req, res) => {
   // setup email data with unicode symbols
   let mailOptions = {
       from: '"Access Tennessee Contact" <tanyaleedev@gmail.com>', // sender address
-      to: 'tanyaleepr@gmail.com', // list of receivers
+      to: 'tanyaleepr@gmail.com', // list of receivers  -How to connect this to people who request contact, add contact list?
       subject: 'AT Submission Receipt', // Subject line
       text: 'Thanks for your submission. We will contact you shortly! ', // plain text body
       html: output // html body
