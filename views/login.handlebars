@@ -24,82 +24,45 @@
 	<!-- Favicon  -->
     <link rel="icon" href="images/favicon-32x32.png">
 </head>
-<form class="container-login100">
-<div class="wrap-login100">
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
-    <label for="name"><b>Full Name or Business Name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" required>
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-33">
+						<h1>Account Login</h1>
+					</span>
 
-    <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter username" name="username" required>
+					<div class="validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
 
-    <label for="bio"><b>Bio</b></label>
-    <input type="text" placeholder="Enter Bio" name="bio" required>
+					<div class="rs1 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+					<div class="container-login100-form-btn m-t-20">
+						<button class="login100-form-btn">
+							<a href="dashboard.html" class="txt2 hov1"></a>
+						Sign In
+						</button>
+					</div>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+					<div class="login100-form-title">
+						<span class="txt1">
+							Create an account?
+						</span>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-    <label for="picture"><b>Select Profile Picture:</b></label>
-    <input id="image" type="file" name="profile_photo" placeholder="Photo" required="" capture>
-    
-    
-    <h6>Types of impairments:</h6>
-    <label for="hearing">Hearing Impairment </label>
-        <input type="checkbox" checked="checked">
-        <span class="checkmark"></span>
-      
-      <label for="vision">Vision Impairment </label>
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      
-      <label for="mobility">Mobility Impairment </label>
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      
-      <label for="neurological">Neurological Impairment </label>
-        <input type="checkbox">
-        <span class="checkmark"></span>
-
-      <label for="cognitive">Cognitive Impairment </label>
-        <input type="checkbox">
-        <span class="checkmark"></span>
-
-      <label for="medical">Medical </label>
-        <input type="checkbox">
-        <span class="checkmark"></span>
-
-      <label for="psychological">Psychological </label>
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label>
-
-      <form action="">
-        <p>Please select the type of account:</p>
-      <input type="radio" id="individual_profile" name="individual_profile" value="individual">
-      <label for="individual_profile">Individual Profile</label><br>
-      <input type="radio" id="business_profile" name="business_profile" value="business">
-      <label for="business_profile">Business Profile</label> <br>
-    
-      </form>
-
-    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-    <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
-    <div>
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn">Sign Up</button>
-    </div>
-  </div>
-</form>
-</div>
+						<a href="signup.html" class="txt2 hov1">
+							Sign up
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
 <script src="/javascript/login.js"></script>
