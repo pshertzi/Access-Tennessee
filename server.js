@@ -31,7 +31,6 @@ app.use(express.urlencoded({ extended: true }));
 // turn on routes
 app.use(routes);
 
-//handle bars
 const hbs = exphbs.create({});
 
 app.engine('handlebars', hbs.engine);
