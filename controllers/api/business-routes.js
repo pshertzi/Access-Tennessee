@@ -81,7 +81,33 @@ router.post('/', (req, res) => {
     });
 });
 // Login route
-
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            b_email: req.body.b_email
+        }
+    })
+    .then(dbBusinessData => {
+        if (!dbBusinessData) {
+            res.status(400).json({ message: 'No business found!' });
+            return;
+        }
+        // Verify user
+        const validPassword = dbBusinessData.checkPassword(req.body.b_password);
+        
+        if(!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+        req.session.save(() => {
+            // declare session variables
+            req.session.business_id = dbBusinessData.id;
+            req.session.b_username = dbBusinessData.b_username;
+            req.session.loggedIn = true;
+            res.json({ user: dbBusinessData, message: 'You are now logged in!' });
+        });
+    });
+});
 // Update business info (PUT)
 router.put('/:id', (req, res) => {
     Business.update(req.body, {

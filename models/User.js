@@ -62,7 +62,6 @@ User.init(
     },
     {
         hooks: {
-            // * bulkCreated data and new user data not being hashed * Not able to login until updated user
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
