@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 router.get('/login', (req, res) => {
   if(req.session.loggedIn) {
-    res.redirect('userpage');
+    res.redirect('/userpage');
     return;
   }
   res.render('login');
