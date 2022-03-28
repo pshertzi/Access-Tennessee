@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Impair, Suggestion } = require('../../models');
+const { User, Impair, Suggestion, Business } = require('../../models');
 
 // GET all users
 router.get('/', (req, res) => {
@@ -10,10 +10,14 @@ router.get('/', (req, res) => {
                 model: Impair,
                 attributes: ['impairment']
             },
-            // {
-            //     model: Suggestion,
-            //     attributes: ['suggestion_text', 'created_at']
-            // }
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at'],
+                include: {
+                    model: Business,
+                    attributes: ['b_name']
+                }
+            }
         ]
     })
     .then(dbUserData => res.json(dbUserData))
@@ -28,7 +32,25 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Impair,
+                attributes: ['impairment']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                  model: Post,
+                  attributes: ['title']
+                }
+              },
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at']
+             }
+        ]
     })
     .then(dbUserData => {
         if(!dbUserData) {
@@ -52,13 +74,21 @@ router.post('/', (req, res) => {
         password: req.body.password,
         description: req.body.description
     })
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => {
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+    
+            res.json(dbUserData);
+        });
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
 });
-// Login route * Will only work AFTER User has been updated in some way *
+// Login route 
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
@@ -77,9 +107,28 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'Incorrect password!' });
             return;
         }
-        res.json({ user: dbUserData, message: 'You are logged in!' });
+        req.session.save(() => {
+            // declare session variables
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+      
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+          });
     });
 });
+//log out
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+          res.status(204).end();
+        });
+      }
+      else {
+        res.status(404).end();
+      }    
+});
+
 // Update user info (PUT)
 router.put('/:id', (req, res) => {
     User.update(req.body, {

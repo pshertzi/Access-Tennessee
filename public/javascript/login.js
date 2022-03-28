@@ -1,17 +1,13 @@
-//Sign Up function
-function signupFormHandler(event) {
+async function loginFormHandler(event) {
     event.preventDefault();
   
-    const username = document.querySelector('#username-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-    const bio = document.querySelector('#bio-signup').value.trim();
+    const email = document.querySelector('#email-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
   
-    if (username && email && password && bio && picture_url) {
-      const response = await fetch('/api/users', {
+    if (email && password) {
+      const response = await fetch('/api/users/login', {
         method: 'post',
         body: JSON.stringify({
-          username,
           email,
           password,
           bio,
@@ -19,16 +15,13 @@ function signupFormHandler(event) {
         }),
         headers: { 'Content-Type': 'application/json' }
       });
-      if( response.ok) {
-        document.location.replace('/individual')
+  
+      if (response.ok) {
+        document.location.replace('/userpage');
       } else {
         alert(response.statusText);
       }
     }
   }
-
-
-
-
-
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+  
+  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);

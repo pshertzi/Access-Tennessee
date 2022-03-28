@@ -28,7 +28,7 @@ User.init(
         },
         last_name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         email: {
             type: DataTypes.STRING,
@@ -47,9 +47,9 @@ User.init(
         },
         description: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
-                len: [10]
+                len: [1]
             }
         },
         picture_url: {
@@ -62,7 +62,6 @@ User.init(
     },
     {
         hooks: {
-            // * bulkCreated data and new user data not being hashed * Not able to login until updated user
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;

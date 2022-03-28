@@ -1,11 +1,27 @@
 const router = require('express').Router();
 const req = require('express/lib/request');
-const { Business, Impair } = require('../../models');
+const { Business, Impair, Suggestion, User } = require('../../models');
 
 // GET all businesses
 router.get('/', (req, res) => {
     Business.findAll({
-        attributes: { exclude: ['password'] }
+        attributes: { exclude: ['password'] },
+        include: [
+            {
+                model: Impair,
+                attributes: ['impairment']
+            },
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at'],
+                include: [
+                    {
+                        model: User,
+                        attributes: ['username']
+                    }
+                ]
+            }
+        ]
     })
     .then(dbBusinessData => res.json(dbBusinessData))
     .catch(err => {
@@ -19,7 +35,23 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['b_password'] },
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Impair,
+                attributes: ['impairment']
+            },
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at'],
+                include: [
+                    {
+                        model: User,
+                        attributes: ['username']
+                    }
+                ]
+            }
+        ]
     })
     .then(dbBusinessData => {
         if(!dbBusinessData) {
@@ -49,7 +81,33 @@ router.post('/', (req, res) => {
     });
 });
 // Login route
-
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            b_email: req.body.b_email
+        }
+    })
+    .then(dbBusinessData => {
+        if (!dbBusinessData) {
+            res.status(400).json({ message: 'No business found!' });
+            return;
+        }
+        // Verify user
+        const validPassword = dbBusinessData.checkPassword(req.body.b_password);
+        
+        if(!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+        req.session.save(() => {
+            // declare session variables
+            req.session.business_id = dbBusinessData.id;
+            req.session.b_username = dbBusinessData.b_username;
+            req.session.loggedIn = true;
+            res.json({ user: dbBusinessData, message: 'You are now logged in!' });
+        });
+    });
+});
 // Update business info (PUT)
 router.put('/:id', (req, res) => {
     Business.update(req.body, {

@@ -3,21 +3,34 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const session = require('express-session');
+const Sequilizestore = require('connect-session-sequelize')(session.Store);
+//Node mail
 const bodyParser = require('body-parser'); //added for nodemail
 const nodemailer = require('nodemailer'); //added for nodemail
-const multiparty = require("multiparty"); // added for nodemail
+//const multiparty = require("multiparty"); // added for nodemail
 require('dotenv').config(); //added for nodemail
 const Contact = require("./models/contacts.js");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new Sequilizestore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // turn on routes
 app.use(routes);
 
-//handle bars
 const hbs = exphbs.create({});
 
 app.engine('handlebars', hbs.engine);
