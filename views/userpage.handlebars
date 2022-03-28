@@ -1,36 +1,18 @@
-<article class="post">
-  <div class="title">
-    {{suggestion.suggestion_text}}</a>
-  </div>
-  <div class="meta">
-     Created on
-    {{suggestion.created_at}}
-    |
-    <a href="/suggestion/{{suggestion.id}}">{{suggestion.comments.length}} comment(s)</a>
-  </div>
-</article>
-
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
-
-  <div>
-    <button type="submit">add comment</button>
-  </div>
-</form>
-
-<div class="comments">
-  {{#each suggestion.comments}}
-  <section class="comment">
-    <div class="meta">
-      {{user.username}} on {{created_at}}
-    </div>
-    <div class="text">
-      {{comment_text}}
-    </div>
-  </section>
+<ol class="post-list">
+  {{#each suggestions as |suggestion|}}
+  <li>
+    <article class="post">
+      <div class="title">
+       <p>  {{suggestion_text}}  </p>
+      </div>
+      <div class="meta">
+        created by {{suggestion.user.username}} on
+        {{suggestion.created_at}}
+        |
+        <a href="/post/{{suggestion.id}}">{{suggestion.comments.length}} comment(s)</a>
+      </div>
+    </article>
+  </li>
   {{/each}}
-</div>
+</ol>
 
-<script src="/javascript/comment.js"></script>

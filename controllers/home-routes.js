@@ -21,7 +21,36 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/userpage', (req, res) => {
-  res.render('userpage');
+  Suggestion.findAll({
+    attributes: [
+      'id',
+      'suggestion_text',
+      'business_id',
+     'created_at'
+    ],
+    include: [
+      {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'suggestion_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbsuggestionData => {
+      const suggestions = dbsuggestionData.map(suggestion => suggestion.get({ plain: true }));
+      res.render('userpage', { suggestions });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.get('/signup', (req, res) => {
