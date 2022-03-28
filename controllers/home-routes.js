@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Suggestion, User, Comment, Vote } = require('../models');
+const { Suggestion, User, Comment, } = require('../models');
 
 router.get('/', (req, res) => {
   res.render('homepage');
@@ -38,7 +38,6 @@ router.get('/suggestion/:id', (req, res) => {
       'suggestion_text',
       'business_id',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE suggestion.id = vote.suggestion_id)'), 'vote_count']
     ],
     include: [
       {

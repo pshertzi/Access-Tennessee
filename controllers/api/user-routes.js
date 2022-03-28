@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Impair, Suggestion } = require('../../models');
+const { User, Impair, Suggestion, Business } = require('../../models');
 
 // GET all users
 router.get('/', (req, res) => {
@@ -12,8 +12,12 @@ router.get('/', (req, res) => {
             },
             {
                 model: Suggestion,
-                attributes: ['suggestion_text', 'created_at']
-             }
+                attributes: ['suggestion_text', 'created_at'],
+                include: {
+                    model: Business,
+                    attributes: ['b_name']
+                }
+            }
         ]
     })
     .then(dbUserData => res.json(dbUserData))
@@ -72,19 +76,19 @@ router.post('/', (req, res) => {
     })
     .then(dbUserData => {
         req.session.save(() => {
-          req.session.user_id = dbUserData.id;
-          req.session.username = dbUserData.username;
-          req.session.loggedIn = true;
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
     
-          res.json(dbUserData);
+            res.json(dbUserData);
         });
-      })
-      .catch(err => {
+    })
+    .catch(err => {
         console.log(err);
         res.status(500).json(err);
-      });
+    });
 });
-// Login route * Will only work AFTER User has been updated in some way *
+// Login route 
 router.post('/login', (req, res) => {
     User.findOne({
         where: {

@@ -17,21 +17,21 @@ Suggestion.init(
                 len: [1]
             }
         },
-         user_id: {
-             type: DataTypes.INTEGER,
-                allowNull: false,
-             references: {
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
                 model: 'user',
-                 key: 'id'
-             }
-         },
-         business_id: {
-             type: DataTypes.INTEGER,
-             references: {
-                 model: 'business',
-                 key: 'id'
-             }
-         },
+                key: 'id'
+            }
+        },
+        business_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'business',
+                key: 'id'
+            }
+        },
     },
     {
         sequelize,

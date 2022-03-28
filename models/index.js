@@ -6,59 +6,43 @@ const Rate = require('./Rate');
 const Contact = require('./Contacts');
 const Comment = require('./Comment');
 // Associations
+User.hasMany(Impair, {
+    foreignKey: 'user_id'
+});
 User.hasMany(Suggestion, {
     foreignKey: 'user_id'
-});
+})
+Business.hasMany(Impair, {
+    foreignKey: 'business_id'
+})
+Business.hasMany(Suggestion, {
+    foreignKey: 'business_id'
+})
+Suggestion.belongsTo(Business, {
+    foreignKey: 'business_id'
+})
 Suggestion.belongsTo(User, {
-    foreignKey: 'user_id',
-});
-User.belongsToMany(Suggestion, {
-    through: Rate,
-    as: 'rates_suggestions',
     foreignKey: 'user_id'
-});
-Suggestion.belongsToMany(User, {
-    through: Rate,
-    as: 'rated_suggestions',
-    foreignKey: 'suggested_id'
-});
-Rate.belongsTo(User, {
-    foreignKey: 'user_id'
-  });
-  
-Rate.belongsTo(Suggestion, {
-    foreignKey: 'suggestion_id'
-  });
-  
-User.hasMany(Rate, {
-    foreignKey: 'user_id'
-  });
-  
-Suggestion.hasMany(Rate, {
-    foreignKey: 'suggestion_id'
-});
+})
+
 Comment.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: 'SET NULL'
   });
   
 Comment.belongsTo(Suggestion, {
-    foreignKey: 'suggestion_id'
+    foreignKey: 'suggestion_id',
+    onDelete: 'SET NULL'
   });
   
 User.hasMany(Comment, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: 'SET NULL'
   });
   
 Suggestion.hasMany(Comment, {
     foreignKey: 'suggestion_id'
   });
-  
-
-User.hasMany(Impair);
-Impair.belongsTo(User);
-
-
-
 
 
 module.exports = { User, Impair, Suggestion, Business, Rate, Contact, Comment};
