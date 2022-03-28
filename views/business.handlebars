@@ -1,104 +1,39 @@
 
-<div class="container">
+<article class="container">
     <div class="row bootstrap snippets bootdeys"> 
         <div class="col-md-9 col-sm-7"> 
             <h2>Businesses</h2> 
         </div> 
         
     </div>
+<ol>
+    {{#each Businesses}}
+    <li>
+        
     <div class="member-entry"> 
         <a href="#" class="member-img"> 
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" class="img-rounded"> 
+            <img src="{{businesses.logo_url}}" class="img-rounded"> 
             <i class="fa fa-forward"></i> 
         </a> 
         <div class="member-details"> 
-            <h4>Google</h4> 
+            <h4>{{businesses.b_name}}</h4> 
             <div class="row info-list"> 
                 <div class="col-sm-4"> 
                     <i class="fa fa-briefcase"></i>
-                    Co-Founder at Complete Tech
+                    {{businesses.b_description}}
                 </div> 
                 
                 <div class="col-sm-4"> 
                     <i class="fa fa-envelope"></i> 
-                    <a href="#">john@gmail.com</a> 
+                    <a href="#">{{businesses.b_email}}</a> 
                 </div> 
                 <div class="col-sm-4"> 
-                    <p>john@gmail.com</p> 
+                    <p>{{businesses.b_email}}</p> 
                 </div>
             </div> 
         </div> 
     </div>
-    <div class="member-entry"> 
-        <a href="#" class="member-img"> 
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png" class="img-rounded"> 
-            <i class="fa fa-forward"></i> 
-        </a> 
-        <div class="member-details"> 
-            <h4>Johnnie Linton </h4> 
-            <div class="row info-list"> 
-                <div class="col-sm-4"> 
-                    <i class="fa fa-briefcase"></i>
-                    Co-Founder at Complete Tech
-                </div> 
-                
-                <div class="col-sm-4"> 
-                    <i class="fa fa-envelope"></i> 
-                    <a href="#">john@gmail.com</a> 
-                </div> 
-                <div class="col-sm-4"> 
-                    <p>john@gmail.com</p> 
-                </div>
-                
-            </div> 
-        </div> 
-    </div>
-    <div class="member-entry"> 
-        <a href="#" class="member-img"> 
-            <img src="https://ftw.usatoday.com/wp-content/uploads/sites/90/2022/03/FOds3iGWUAEz9Tt.jpeg" class="img-rounded"> 
-            <i class="fa fa-forward"></i> 
-        </a> 
-        <div class="member-details"> 
-            <h4>Johnnie Linton </h4> 
-            <div class="row info-list"> 
-                <div class="col-sm-4"> 
-                    <i class="fa fa-briefcase"></i>
-                    Co-Founder at Complete Tech
-                </div> 
-                
-                <div class="col-sm-4"> 
-                    <i class="fa fa-envelope"></i> 
-                    <a href="#">john@gmail.com</a> 
-                </div> 
-                <div class="col-sm-4"> 
-                    <p>john@gmail.com</p> 
-                </div>
-            </div> 
-        </div>  
-    </div>
-    <div class="member-entry"> 
-        <a href="#" class="member-img"> 
-            <img src="https://cdn.vox-cdn.com/thumbor/Yq1Vd39jCBGpTUKHUhEx5FfxvmM=/39x0:3111x2048/1200x800/filters:focal(39x0:3111x2048)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png" class="img-rounded"> 
-            <i class="fa fa-forward"></i> 
-        </a> 
-        <div class="member-details"> 
-            <h4>Johnnie Linton </h4> 
-            <div class="row info-list"> 
-                <div class="col-sm-4"> 
-                    <i class="fa fa-briefcase"></i>
-                    Co-Founder at Complete Tech
-                </div> 
-                
-                <div class="col-sm-4"> 
-                    <i class="fa fa-envelope"></i> 
-                    <a href="#">john@gmail.com</a> 
-                </div> 
-                <div class="col-sm-4"> 
-                    <p>john@gmail.com</p> 
-                </div>
-            </div> 
-        </div> 
-    </div>
-
-    </div>
-    </div>
+</article>
+    </li>
+    {{/each}}
+</ol>

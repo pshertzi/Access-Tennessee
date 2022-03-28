@@ -5,17 +5,25 @@ function signupFormHandler(event) {
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
+    const bio = document.querySelector('#bio-signup').value.trim();
   
-    if (username && email && password) {
-      fetch('/api/users', {
+    if (username && email && password && bio && picture_url) {
+      const response = await fetch('/api/users', {
         method: 'post',
         body: JSON.stringify({
           username,
           email,
-          password
+          password,
+          bio,
+          picture_url
         }),
         headers: { 'Content-Type': 'application/json' }
-      }).then((response) => {console.log(response)})
+      });
+      if( response.ok) {
+        document.location.replace('/individual')
+      } else {
+        alert(response.statusText);
+      }
     }
   }
 
