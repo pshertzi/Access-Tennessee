@@ -10,10 +10,10 @@ router.get('/', (req, res) => {
                 model: Impair,
                 attributes: ['impairment']
             },
-            // {
-            //     model: Suggestion,
-            //     attributes: ['suggestion_text', 'created_at']
-            // }
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at']
+             }
         ]
     })
     .then(dbUserData => res.json(dbUserData))
@@ -28,7 +28,25 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Impair,
+                attributes: ['impairment']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                  model: Post,
+                  attributes: ['title']
+                }
+              },
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text', 'created_at']
+             }
+        ]
     })
     .then(dbUserData => {
         if(!dbUserData) {
