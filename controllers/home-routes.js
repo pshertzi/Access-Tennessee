@@ -20,13 +20,21 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/b-login', (req, res) => {
+  if(req.session.loggedIn) {
+    res.redirect('/business');
+    return;
+  }
+  res.render('blogin');
+})
+
 router.get('/userpage', (req, res) => {
   Suggestion.findAll({
     attributes: [
       'id',
       'suggestion_text',
       'business_id',
-     'created_at'
+      'created_at'
     ],
     include: [
       {
