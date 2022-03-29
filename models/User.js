@@ -56,10 +56,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        impairment: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        }
+        
     },
     {
         hooks: {
