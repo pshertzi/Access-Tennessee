@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Suggestion, User, Comment, } = require('../models');
+const { Suggestion, User, Comment, Business, Impair } = require('../models');
 
 router.get('/', (req, res) => {
   res.render('homepage');
@@ -100,5 +100,46 @@ router.get('/suggestion/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+router.get('/business', (req, res) => {
+  Business.findAll({
+    attributes: [
+      'id',
+      'b_name',
+      'b_email',
+      'b_description'
+    ],
+    include: [
+      {
+        model: Impair,
+        attributes: ['impairment']
+      },
+      {
+        model: Suggestion,
+        attributes: ['suggestion_text'],
+        include: [
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      }
+    ]
+  })
+  .then(dbBusinessData => {
+    const businesses = dbBusinessData.map(business => business.get({ plain: true }));
+    // console.log(typeof businesses)
+    const data = {
+      businesses
+    }
+    res.render('business', data);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+
 
 module.exports = router;
