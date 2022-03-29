@@ -71,6 +71,9 @@ router.get('/userpage', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('signup');
 });
+router.get('/bsignup', (req, res) => {
+  res.render('bsignup');
+})
 
 router.get('/suggestion/:id', (req, res) => {
   const post = {

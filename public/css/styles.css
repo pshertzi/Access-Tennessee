@@ -1315,7 +1315,15 @@ input[type=text], input[type=password] {
   .container {
 	padding: 16px;
   }
-
+#sign-up-button {
+	display:none
+}
+#bus-sign-up-button {
+	display: inline;
+}
+.hide {
+	display: none
+}
 /******************/
 /*     Footer     */
 /******************/
