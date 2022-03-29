@@ -121,6 +121,7 @@ router.get('/business', (req, res) => {
     const data = {
       businesses
     }
+    console.log(data);
     res.render('business', data);
   })
   .catch(err => {
