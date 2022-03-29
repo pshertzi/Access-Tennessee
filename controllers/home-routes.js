@@ -51,7 +51,9 @@ router.get('/userpage', (req, res) => {
       const data = {
         users
       }
-      res.render('userpage', { data });
+      console.log('=======================');
+      console.log(data);
+      res.render('userpage',  data );
     })
     .catch(err => {
       console.log(err);
