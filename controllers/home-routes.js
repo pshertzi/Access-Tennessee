@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Suggestion, User, Comment, } = require('../models');
+const { Suggestion, User, Comment, Business, Impair } = require('../models');
 
 router.get('/', (req, res) => {
   res.render('homepage');
@@ -21,31 +21,37 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/userpage', (req, res) => {
-  Suggestion.findAll({
+  User.findAll({
     attributes: [
       'id',
-      'suggestion_text',
-      'business_id',
-     'created_at'
+      'first_name',
+      'last_name',
+     'email',
+     'description'
     ],
     include: [
       {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'suggestion_id', 'user_id', 'created_at'],
-          include: {
+        model: Impair,
+        attributes: ['impairment']
+      },
+      {
+        model: Suggestion,
+        attributes: ['suggestion_text'],
+        include: [
+          {
             model: User,
             attributes: ['username']
           }
-        },
-      {
-        model: User,
-        attributes: ['username']
+        ]
       }
     ]
   })
-    .then(dbsuggestionData => {
-      const suggestions = dbsuggestionData.map(suggestion => suggestion.get({ plain: true }));
-      res.render('userpage', { suggestions });
+    .then(dbuserData => {
+      const users = dbuserData.map(User => User.get({ plain: true }));
+      const data = {
+        users
+      }
+      res.render('userpage', { data });
     })
     .catch(err => {
       console.log(err);
@@ -117,4 +123,42 @@ router.get('/suggestion/:id', (req, res) => {
     });
 });
 
+router.get('/business', (req, res) => {
+  Business.findAll({
+    attributes: [
+      'id',
+      'b_name',
+      'b_email',
+      'b_description'
+    ],
+    include: [
+      {
+        model: Impair,
+        attributes: ['impairment']
+      },
+      {
+        model: Suggestion,
+        attributes: ['suggestion_text'],
+        include: [
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      }
+    ]
+  })
+  .then(dbBusinessData => {
+    const businesses = dbBusinessData.map(business => business.get({ plain: true }));
+    // console.log(typeof businesses)
+    const data = {
+      businesses
+    }
+    res.render('business', data);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
 module.exports = router;
