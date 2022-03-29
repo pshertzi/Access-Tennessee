@@ -6,7 +6,7 @@ const businessData = [
         b_username: 'exhibor',
         b_email: 'exhibor@email.com',
         b_password: 'exhibor123',
-        b_description: 'Exhibor is a locally owned art exhibit that celebrates artist from the area and around the world. We would love you to stop by!'
+        b_description: 'Exhibor is a locally owned art exhibit that celebrates artist from the area and around the world. We would love you to stop by!',
     },
     {
         b_name: 'Fooduro',
@@ -52,6 +52,6 @@ const businessData = [
     }
 ]
 
-const seedBusiness = () => Business.bulkCreate(businessData);
+const seedBusiness = () => Business.bulkCreate(businessData, {individualHooks: true});
 
 module.exports = seedBusiness;
