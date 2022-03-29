@@ -7,6 +7,8 @@ async function signupFormHandler(event) {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
   const description = document.querySelector('#description-signup').value.trim();
+  const impairment = document.querySelector('#impairment-signup').value.trim();
+  const picture_url = document.querySelector('#image-signup').value.trim()
   
 
   if (username && email && password) {
@@ -18,13 +20,15 @@ async function signupFormHandler(event) {
         username,
         email,
         password,
-        description
+        description,
+        impairment,
+        picture_url
       }),
       headers: { 'Content-Type': 'application/json' }
     });
     // check the response status
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/userpage');
     } else {
       alert(response.statusText);
     }

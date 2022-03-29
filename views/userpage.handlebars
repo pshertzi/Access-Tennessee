@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="css/userpage.css">
+</head>
+
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
         <div class="container">
@@ -47,21 +51,66 @@
         
     </div> <!-- end of header -->
 
+<div class="container">
+<div id="content" class="content p-0">
+    <div class="profile-header">
+        <div class="profile-header-cover"></div>
+        <div class="profile-header-content">
+            <div class="profile-header-img mb-4">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="mb-4" alt="" />
+            </div>
 
-<article class="container">
-    <div class="row bootstrap snippets bootdeys"> 
-        <div class="col-md-9 col-sm-7"> 
-            <h2>Users</h2> 
-        </div> 
-        
+            <div class="profile-header-info">
+                <h4 class="m-t-sm">USER Profile</h4>
+                <p class="m-b-sm">Impairment</p>
+                
+            </div>
+        </div>
+
+        <ul class="profile-header-tab nav nav-tabs">
+            <li class="nav-item"><a href="#suggestions" class="nav-link" data-toggle="tab">Suggestions</a></li>
+            <li class="nav-item"><a href="#profile-friends" class="nav-link active show" data-toggle="tab">Users</a></li>
+        </ul>
     </div>
-<ol>
-    {{#each users}}
-        {{> user-card}}
-    {{/each}}
-</ol>
-</article>
 
+    <div class="profile-container">
+        <div class="row row-space-20">
+            <div class="col-md-8">
+                <div class="tab-content p-0">
+
+                    <div class="tab-pane fade active show" id="profile-friends">
+                        <div class="m-b-10"><b>Users</b></div>
+
+                        <ul class="friend-list clearfix">
+                            <div class="friend-info">
+                                <ol>
+                                    {{#each users}}
+                                        {{> user-card}}
+                                    {{/each}}
+                                </ol>
+                            </div>
+                        </ul>
+                    </div>
+                            <article class="container">
+                                <div class="row bootstrap snippets bootdeys"> 
+                                    <div class="col-md-9 col-sm-7"> 
+                                        <h2>Businesses</h2> 
+                                    </div> 
+                                    
+                                </div>
+                                <ol>
+                                    {{#each businesses}}
+                                        {{> business-card}}
+                                    {{/each}}
+                                </ol>
+                            </article>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+         
 <!-- Footer -->
     <!--social media icons are not connected to links-->
     <div class="footer bg-gray">
