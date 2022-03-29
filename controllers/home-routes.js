@@ -35,7 +35,9 @@ router.get('/userpage', (req, res) => {
       'first_name',
       'last_name',
      'email',
-     'description'
+     'description',
+     'username',
+     'impairment',
     ],
     include: [
       {
@@ -59,8 +61,6 @@ router.get('/userpage', (req, res) => {
       const data = {
         users
       }
-      console.log('=======================');
-      console.log(data);
       res.render('userpage',  data );
     })
     .catch(err => {
@@ -69,7 +69,12 @@ router.get('/userpage', (req, res) => {
     });
 });
 
-router.get('/post/:id', (req, res) => {
+
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+router.get('/suggestion/:id', (req, res) => {
   const post = {
     id: 1,
     post_url: 'https://handlebarsjs.com/guide/',
@@ -82,58 +87,48 @@ router.get('/post/:id', (req, res) => {
     }
   };
 
-  res.render('post', { Suggestion });
-});
-
-router.get('/signup', (req, res) => {
-  res.render('signup');
-});
-
-router.get('/suggestion/:id', (req, res) => {
-  Suggestion.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: [
-      'id',
-      'suggestion_text',
-      'business_id',
-      'created_at',
-    ],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'suggestion_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-    .then(dbsuggestionData => {
-      if (!dbsuggestionData) {
-        res.status(404).json({ message: 'No suggestion found with this id' });
-        return;
-      }
-
-      // serialize the data
-      const suggestion = dbsuggestionData.get({ plain: true });
-
-      // pass data to template
-      res.render('single-suggestion', { suggestion });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  res.render('single-suggestion', { post });
 });
 
 router.get('/business', (req, res) => {
+  Business.findAll({
+    attributes: [
+      'id',
+      'b_name',
+      'b_email',
+      'b_description'
+    ],
+    include: [
+      {
+        model: Impair,
+        attributes: ['impairment']
+      },
+      {
+        model: Suggestion,
+        attributes: ['suggestion_text'],
+        include: [
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      }
+    ]
+  })
+  .then(dbBusinessData => {
+    const businesses = dbBusinessData.map(business => business.get({ plain: true }));
+    // console.log(typeof businesses)
+    const data = {
+      businesses
+    }
+    res.render('business', data);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+router.get('/userpage', (req, res) => {
   Business.findAll({
     attributes: [
       'id',
@@ -166,7 +161,7 @@ router.get('/business', (req, res) => {
     const data = {
       businesses
     }
-    res.render('business', data);
+    res.render('userpage', data);
   })
   .catch(err => {
     console.log(err);
