@@ -109,7 +109,7 @@ router.post('/b-login', (req, res) => {
     });
 });
 //log out
-router.post('/logout', (req, res) => {
+router.post('/blogout', (req, res) => {
     if (req.session.b_loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();

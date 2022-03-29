@@ -34,10 +34,8 @@ router.get('/userpage', (req, res) => {
       'id',
       'first_name',
       'last_name',
-     'email',
-     'description',
-     'username',
-     'impairment',
+      'email',
+      'description'
     ],
     include: [
       {
@@ -56,8 +54,8 @@ router.get('/userpage', (req, res) => {
       }
     ]
   })
-    .then(dbuserData => {
-      const users = dbuserData.map(User => User.get({ plain: true }));
+    .then(dbUserData => {
+      const users = dbUserData.map(User => User.get({ plain: true }));
       const data = {
         users
       }
@@ -128,44 +126,5 @@ router.get('/business', (req, res) => {
     res.status(500).json(err);
   });
 });
-router.get('/userpage', (req, res) => {
-  Business.findAll({
-    attributes: [
-      'id',
-      'b_name',
-      'b_email',
-      'b_description',
-      'logo_url',
-      'b_username'
-    ],
-    include: [
-      {
-        model: Impair,
-        attributes: ['impairment']
-      },
-      {
-        model: Suggestion,
-        attributes: ['suggestion_text'],
-        include: [
-          {
-            model: User,
-            attributes: ['username']
-          }
-        ]
-      }
-    ]
-  })
-  .then(dbBusinessData => {
-    const businesses = dbBusinessData.map(business => business.get({ plain: true }));
-    // console.log(typeof businesses)
-    const data = {
-      businesses
-    }
-    res.render('userpage', data);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-});
+
 module.exports = router;
