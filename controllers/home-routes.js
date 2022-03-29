@@ -20,14 +20,28 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/b-login', (req, res) => {
+  if(req.session.loggedIn) {
+    res.redirect('/business');
+    return;
+  }
+  res.render('blogin');
+})
+
 router.get('/userpage', (req, res) => {
   User.findAll({
     attributes: [
       'id',
+<<<<<<< HEAD
       'first_name',
       'last_name',
      'email',
      'description'
+=======
+      'suggestion_text',
+      'business_id',
+      'created_at'
+>>>>>>> e9c48f59a24e10d5bb81c4cd6484eeef9eb81b1a
     ],
     include: [
       {

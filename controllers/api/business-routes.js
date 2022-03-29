@@ -81,8 +81,8 @@ router.post('/', (req, res) => {
     });
 });
 // Login route
-router.post('/login', (req, res) => {
-    User.findOne({
+router.post('/b-login', (req, res) => {
+    Business.findOne({
         where: {
             b_email: req.body.b_email
         }
@@ -107,6 +107,17 @@ router.post('/login', (req, res) => {
             res.json({ user: dbBusinessData, message: 'You are now logged in!' });
         });
     });
+});
+//log out
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    }
+    else {
+        res.status(404).end();
+    }    
 });
 // Update business info (PUT)
 router.put('/:id', (req, res) => {
