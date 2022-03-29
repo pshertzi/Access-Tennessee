@@ -7,6 +7,8 @@ async function signupFormHandler(event) {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
   const description = document.querySelector('#description-signup').value.trim();
+  const impairment = document.querySelector('#impairment-signup').value.trim();
+  const picture_url = document.querySelector('#image-signup').value.trim()
   
 
   if (username && email && password) {
@@ -18,13 +20,15 @@ async function signupFormHandler(event) {
         username,
         email,
         password,
-        description
+        description,
+        impairment,
+        picture_url
       }),
       headers: { 'Content-Type': 'application/json' }
     });
     // check the response status
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/userpage');
     } else {
       alert(response.statusText);
     }
@@ -38,7 +42,11 @@ async function b_signupFormHandler(event) {
   const b_email = document.querySelector('#b-email-signup').value.trim();
   const b_password = document.querySelector('#b-password-signup').value.trim();
   const b_description = document.querySelector('#b-description-signup').value.trim();
+<<<<<<< HEAD
   // const logo_url = document.querySelector('#logo_url').value
+=======
+  //const logo_url = document.querySelector('#logo_url').value.trim();
+>>>>>>> f1f50c278fac0f521a9155aaa28552416e1f9602
   
 
   if (b_username && b_email && b_password && b_description && b_username) {
@@ -49,7 +57,12 @@ async function b_signupFormHandler(event) {
         b_username,
         b_email,
         b_password,
+<<<<<<< HEAD
         b_description
+=======
+        b_description,
+        //logo_url
+>>>>>>> f1f50c278fac0f521a9155aaa28552416e1f9602
       }),
       headers: { 'Content-Type': 'application/json' }
     });
