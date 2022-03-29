@@ -55,8 +55,7 @@ User.init(
         picture_url: {
             type: DataTypes.STRING,
             allowNull: true,
-        },
-        
+        }
     },
     {
         hooks: {

@@ -12,7 +12,7 @@ async function logout() {
   }
   
   async function logout() {
-    const response = await fetch('/api/business/logout', {
+    const response = await fetch('/api/business/blogout', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' }
     });

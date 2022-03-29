@@ -1,9 +1,13 @@
 
-
-<form class="signup-form">
+<form class="signup-form" id="sign-up">
   <div class="container-login100">
     <div class="wrap-login10">
-      <h1> User Sign Up</h1>
+      <h1> 
+        <ul class="profile-header-tab nav nav-tabs">
+          <li class="nav-item"><a href="#signup-form" class="nav-link active show" data-toggle="tab">User Sign Up</a></li>
+          <li class="nav-item"><a href="#b-signup-form" class="nav-link" data-toggle="tab">Business Sign Up</a></li>
+        </ul>
+      </h1>
     <p>Please fill in this form to create an account. For Business sign up please scroll down.</p>
     <hr>
       <div>
@@ -43,43 +47,49 @@
     </div>
   </div>
 </form>
-<form class="b-signup-form">
-  <div class="container-login100">
-    <div class="wrap-login10">
-      <h1> Business Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
-      <div>
-        <label for="b-name-signup"><b>Business Name</b></label>
-        <input type="text" placeholder="Enter business name" id="b-name-signup" required />
-      </div>
-      <div>
-        <label for="b-username-signup"><b>Username</b></label>
-        <input type="text" id="b-username-signup" placeholder="Enter username" required />
-      </div>
-      
-      <div>
-        <label for="b-email-signup"><b>Business Email</b></label>
-        <input type="text" id="b-email-signup" placeholder="Enter business email" required />
-      </div>
-      <div>
-        <label for="b-password-signup"><b>Password</b></label>
-        <input type="password" id="b-password-signup" placeholder="Enter Password"required />
-      </div>
-      <div>
-        <label for="b-description-signup"><b>Bio</b></label>
-        <input type="text" id="b-description-signup" placeholder="Enter Bio"required />
-      </div>
-      <div>
-        <label for="logo-url-signup"><b>Select Profile Picture:</b></label>
-        <input id="logo-url-signup" type="file" name="logo_url" placeholder="Photo" required="" capture>
-      </div>
-      <div>
-        <button type="submit">signup</button>
-      </div>
+<form class="b-signup-form" id="b-sign-up" >
+    <div class="container-login100">
+        <div class="wrap-login10">
+        {{!-- <h1> 
+            <ul class="profile-header-tab nav nav-tabs">
+                <li class="nav-item"><a href="/views/signup.handlebars" class="nav-link" data-toggle="tab">User Sign Up</a></li>
+                <li class="nav-item"><a href="/views/bsignup.handlebars" class="nav-link active show" data-toggle="tab">Business Sign Up</a></li>
+            </ul>
+        </h1> --}}
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <div>
+            <label for="b-name-signup"><b>Business Name</b></label>
+            <input type="text" placeholder="Enter business name" id="b-name-signup" required />
+        </div>
+        <div>
+            <label for="b-username-signup"><b>Username</b></label>
+            <input type="text" id="b-username-signup" placeholder="Enter username" required />
+        </div>
+        
+        <div>
+            <label for="b-email-signup"><b>Business Email</b></label>
+            <input type="text" id="b-email-signup" placeholder="Enter business email" required />
+        </div>
+        <div>
+            <label for="b-password-signup"><b>Password</b></label>
+            <input type="password" id="b-password-signup" placeholder="Enter Password"required />
+        </div>
+        <div>
+            <label for="b-description-signup"><b>Bio</b></label>
+            <input type="text" id="b-description-signup" placeholder="Enter Bio"required />
+        </div>
+        {{!-- <div>
+            <label for="logo-url-signup"><b>Select Profile Picture:</b></label>
+            <input id="logo-url-signup" type="file" name="logo_url" placeholder="Photo" required="" capture>
+        </div> --}}
+        <div>
+            <button type="submit">signup</button>
+        </div>
+        </div>
     </div>
-  </div>
 </form>
+
 <script src="/javascript/signIn.js"></script>
 
 
