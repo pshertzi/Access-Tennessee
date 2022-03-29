@@ -61,6 +61,7 @@ router.get('/userpage', (req, res) => {
       const data = {
         users
       }
+      console.log('=====================================')
       res.render('userpage',  data );
     })
     .catch(err => {
@@ -74,21 +75,7 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-router.get('/suggestion/:id', (req, res) => {
-  const post = {
-    id: 1,
-    post_url: 'https://handlebarsjs.com/guide/',
-    title: 'Handlebars Docs',
-    created_at: new Date(),
-    vote_count: 10,
-    comments: [{}, {}],
-    user: {
-      username: 'test_user'
-    }
-  };
 
-  res.render('single-suggestion', { post });
-});
 
 router.get('/business', (req, res) => {
   Business.findAll({
@@ -129,44 +116,39 @@ router.get('/business', (req, res) => {
     res.status(500).json(err);
   });
 });
-router.get('/userpage', (req, res) => {
-  Business.findAll({
-    attributes: [
-      'id',
-      'b_name',
-      'b_email',
-      'b_description',
-      'logo_url',
-      'b_username'
-    ],
+
+router.get('/suggestion', (req, res) => {
+  Suggestion.findAll({
+    attributes: ['id', 'suggestion_text', 'business_id', 'created_at'],
     include: [
-      {
-        model: Impair,
-        attributes: ['impairment']
-      },
-      {
-        model: Suggestion,
-        attributes: ['suggestion_text'],
-        include: [
-          {
-            model: User,
-            attributes: ['username']
-          }
-        ]
-      }
-    ]
-  })
-  .then(dbBusinessData => {
-    const businesses = dbBusinessData.map(business => business.get({ plain: true }));
-    // console.log(typeof businesses)
-    const data = {
-      businesses
-    }
-    res.render('userpage', data);
-  })
-  .catch(err => {
+        {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'suggestion_id', 'user_id', 'created_at'],
+            include: {
+              model: User,
+              attributes: ['username']
+            }
+          },
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ]
+})
+.then(dbSuggestionData => {
+  const suggestions = dbSuggestionData.map(suggestion => suggestion.get({ plain: true}));
+  const data = {
+    suggestions
+  }
+  console.log('========================================');
+  console.log(data);
+  res.render('suggestion', data);
+})
+.catch(err => {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json(err)
   });
 });
+
+
 module.exports = router;
