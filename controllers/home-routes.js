@@ -21,7 +21,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/b-login', (req, res) => {
-  if(req.session.loggedIn) {
+  if(req.session.b_loggedIn) {
     res.redirect('/business');
     return;
   }
@@ -115,7 +115,9 @@ router.get('/business', (req, res) => {
       'id',
       'b_name',
       'b_email',
-      'b_description'
+      'b_description',
+      'logo_url',
+      'b_username'
     ],
     include: [
       {

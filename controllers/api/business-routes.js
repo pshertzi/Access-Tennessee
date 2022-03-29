@@ -103,14 +103,14 @@ router.post('/b-login', (req, res) => {
             // declare session variables
             req.session.business_id = dbBusinessData.id;
             req.session.b_username = dbBusinessData.b_username;
-            req.session.loggedIn = true;
+            req.session.b_loggedIn = true;
             res.json({ user: dbBusinessData, message: 'You are now logged in!' });
         });
     });
 });
 //log out
 router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.b_loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
         });
