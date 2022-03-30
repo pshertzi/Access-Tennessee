@@ -12,9 +12,6 @@ User.hasMany(Impair, {
 User.hasMany(Suggestion, {
     foreignKey: 'user_id'
 })
-Business.hasMany(Impair, {
-    foreignKey: 'business_id'
-})
 Business.hasMany(Suggestion, {
     foreignKey: 'business_id'
 })
