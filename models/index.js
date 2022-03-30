@@ -3,8 +3,9 @@ const Impair = require('./Impair');
 const Suggestion = require('./Suggestion');
 const Business = require('./Business');
 const Vote = require('./Vote');
-const Contacts = require('./Contacts');
 const Comment = require('./Comment');
+const Contact = require('./Contacts');
+
 // Associations
 User.hasMany(Impair, {
     foreignKey: 'user_id'
@@ -74,4 +75,4 @@ Suggestion.hasMany(Vote, {
 //   foreignKey: 'c_id'
 // });
 
-module.exports = { User, Impair, Suggestion, Business, Vote, Contacts, Comment};
+module.exports = { User, Impair, Suggestion, Business, Vote, Comment, Contact};

@@ -1,12 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Contacts extends Model {}
+class Contact extends Model {}
 
 
-Contacts.init (
+Contact.init (
     {
-        c_id: {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             allowNull: false,
@@ -26,17 +26,17 @@ Contacts.init (
         c_msg: {
             type: DataTypes.STRING,
             allowNull: false,
-        
+
     },
-    
+
 },
 {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'contacts'
+    modelName: 'contact'
 }
 )
 
-module.exports = Contacts;
+module.exports = Contact;

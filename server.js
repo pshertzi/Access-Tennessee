@@ -10,7 +10,7 @@ const bodyParser = require('body-parser'); //added for nodemail
 const nodemailer = require('nodemailer'); //added for nodemail
 const multiparty = require("multiparty"); // added for nodemail
 require('dotenv').config(); //added for nodemail
-const Contacts = require("./models/Contacts.js");
+const Contact = require("./models/contacts.js");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -63,14 +63,14 @@ app.post('/send', (req, res) => {
     <p>${req.body.msg}</p>
   `;
 
-  var transporter = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
-    auth: {
-      user: "ca2765889d2d23",
-      pass: "0b9ea155e5e3cb"
-    }
-  });
+  // var transporter = nodemailer.createTransport({
+  //   host: "smtp.mailtrap.io",
+  //   port: 2525,
+  //   auth: {
+  //     user: "ca2765889d2d23",
+  //     pass: "0b9ea155e5e3cb"
+  //   }
+  // });
   // create reusable transporter object using the default SMTP transport
   // let transporter = nodemailer.createTransport({
   //   host: 'mail.google.com',
@@ -102,7 +102,7 @@ app.post('/send', (req, res) => {
       console.log('Message sent: %s', info.messageId);   
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('Contacts', {msg:'Email has been sent.'});
+      res.render('Contacts', {msg:'Message has been sent.'});
   });
   });
   
