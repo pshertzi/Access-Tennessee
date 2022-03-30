@@ -17,9 +17,9 @@
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav ml-auto">
                     
-                    <li class="nav-item">
+                    <li class="nav-item user-nav">
                         <button class="nav-link page-scroll" id="logout">logout</button>
-                        
+                        <!--this needs to be debugged. either change button functionality to <a> or idk-->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="/suggestion">View Suggestions</a>
@@ -44,12 +44,12 @@
     </nav> <!-- end of navbar -->
     <!-- end of navigation -->
         <!-- Header -->
-    <div class="header">
-        <div class="ocean">
+    <div class="user-header">
+        {{!-- <div class="ocean">
             <div class="wave"></div>
             <div class="wave"></div>
         </div>
-        
+         --}}
     </div> <!-- end of header -->
 
 <div class="container">
@@ -62,8 +62,8 @@
             </div>
 
             <div class="profile-header-info">
-                <h4 class="m-t-sm">USER Profile</h4>
-                <p class="m-b-sm">Impairment</p>
+                <h4 class="m-t-sm user-h4">USER Profile</h4>
+                <p class="m-b-sm user-h4">Impairment</p>
                 
             </div>
         </div>
@@ -77,11 +77,11 @@
     </div>
 
     <div class="profile-container">
-        <div class="row row-space-20">
-            <div class="col-md-8">
+        <div class="row">
+            <div> <!---took class off class="col-md-8"-->
                 <div class="tab-content p-0">
 
-                    <div class="tab-pane fade active show" id="profile-friends">
+                    <div class="tab-pane fade active show  row-space-20" id="profile-friends">
                         <div class="m-b-10"><b>Users</b></div>
 
                         <ul class="friend-list clearfix">
@@ -101,10 +101,10 @@
 
 <!-- Footer -->
     <!--social media icons are not connected to links-->
-    <div class="footer bg-gray">
+    <div class="footer sm-gray">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <div class="social-container">
                         <span class="fa-stack">
                             <a href="https://www.facebook.com" target="_blank">

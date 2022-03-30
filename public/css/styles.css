@@ -516,6 +516,28 @@ input[type='checkbox'] {
 	background: #1b1e7b;
 }
 
+.user-header {
+	position: relative;
+	overflow: hidden;
+	margin-top: -2%;
+	padding-top: 4rem;
+	padding-bottom: 5rem;
+	background: #1b1e7b;
+}
+
+.user-h4 {
+	color: white;
+}
+
+.user-nav {
+	padding-top: 0.625rem;
+	padding-bottom: 0.625rem;
+	color: #c5c3f0;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	
+	
+}
 .header .text-container {
 	margin-bottom: 4rem;
 	text-align: center;
