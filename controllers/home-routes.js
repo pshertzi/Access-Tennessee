@@ -150,5 +150,43 @@ router.get('/suggestion', (req, res) => {
   });
 });
 
+router.get('/suggestion/:id', (req, res) => {
+  Suggestion.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id', 'suggestion_text', 'business_id', 'created_at'],
+    include: [
+      {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'suggestion_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbsuggestionData => {
+      if (!dbsuggestionData) {
+        res.status(404).json({ message: 'No suggestion found with this id' });
+        return;
+      }
+      const suggestion = dbsuggestionData.get({ plain: true});
+      res.render('single-suggestion', { suggestion });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+
+
 
 module.exports = router;

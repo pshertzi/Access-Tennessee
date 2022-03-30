@@ -48,10 +48,6 @@ app.use(require('./controllers'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/landing-page/index.html'))
-});
-
 app.post('/send', (req, res) => {
   console.log(req.body)
   Contact.create({c_name:req.body.name, c_email:req.body.email, c_msg:req.body.msg})

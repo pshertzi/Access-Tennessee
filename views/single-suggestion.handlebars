@@ -1,0 +1,139 @@
+<head>
+    <link rel="stylesheet" href="/css/userpage.css">
+</head>
+
+<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+        <div class="container">
+            
+            
+            <a class="navbar-brand logo-text page-scroll" href="/">Access Tennessee</a>
+
+        
+            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <button class="nav-link page-scroll" id="logout">logout</button>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/suggestion">View Suggestions</a>
+                    </li>
+                </ul>
+                <span class="nav-item social-icons">
+                    <span class="fa-stack">
+                        <a href="https://www.facebook.com" target="_blank">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-facebook-f fa-stack-1x"></i>
+                        </a>
+                    </span>
+                    <span class="fa-stack">
+                        <a href="https://www.twitter.com" target="_blank">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-twitter fa-stack-1x"></i>
+                        </a>
+                    </span>
+                </span>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+        <!-- Header -->
+    <div class="header">
+        <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        
+    </div> <!-- end of header -->
+<div class="container">
+<div id="content" class="content p-0">
+    <div class="profile-header">
+        <div class="profile-header-cover"></div>
+        <div class="profile-header-content">
+            <div class="profile-header-img mb-4">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="mb-4" alt="" />
+            </div>
+
+            <div class="profile-header-info">
+                <h4 class="m-t-sm">USER Profile</h4>
+                <p class="m-b-sm">Impairment</p>
+                
+            </div>
+        </div>
+
+        <ul class="profile-header-tab nav nav-tabs">
+            
+            <li class="nav-item"><a href="#profile-friends" class="nav-link active show" data-toggle="tab">Users</a></li>
+            <li class="nav-item"><a class="nav-link page-scroll" href="/suggestion">View Suggestions</a></li>
+            <li class="nav-item"><a class="nav-link page-scroll" href="/business">View Businesses</a></li>
+        </ul>
+    </div>
+
+    <div class="profile-container">
+        <div class="row row-space-20">
+            <div class="col-md-8">
+                <div class="tab-content p-0">
+
+                    <div class="tab-pane fade active show" id="profile-friends">
+                        <article class="suggestion">
+                            <div class="title">
+                              <h4>{{suggestion.suggestion_text}} </h4>
+                            </div>
+                            <div class="meta">
+                              created by {{suggestion.user.username}} on
+                              {{suggestion.created_at}}
+                              |
+                              <a href="/suggestion/{{suggestion.id}}">{{suggestion.comments.length}} comment(s)</a>
+                            </div>
+                          </article>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </div>
+
+         
+<!-- Footer -->
+    <!--social media icons are not connected to links-->
+    <div class="footer bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="social-container">
+                        <span class="fa-stack">
+                            <a href="https://www.facebook.com" target="_blank">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook-f fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="https://www.twitter.com" target="_blank">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="https://www.instagram.com" target="_blank">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-instagram fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="https://www.youtube.com" target="_blank">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-youtube fa-stack-1x"></i>
+                            </a>
+                        </span>
+                    </div> <!-- end of social-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of footer -->  
+    <!-- end of footer -->
+
