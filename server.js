@@ -8,7 +8,7 @@ const Sequilizestore = require('connect-session-sequelize')(session.Store);
 //Node mail
 const bodyParser = require('body-parser'); //added for nodemail
 const nodemailer = require('nodemailer'); //added for nodemail
-//const multiparty = require("multiparty"); // added for nodemail
+const multiparty = require("multiparty"); // added for nodemail
 require('dotenv').config(); //added for nodemail
 const Contact = require("./models/contacts.js");
 const app = express();
@@ -51,7 +51,8 @@ app.use(bodyParser.json());
 app.post('/send', (req, res) => {
   console.log(req.body)
   Contact.create({c_name:req.body.name, c_email:req.body.email, c_msg:req.body.msg})
-  .then(dbUserData => console.log(dbUserData))
+  .then(dbcontactData => res.json(dbcontactData))
+    console.log(dbcontactData)
   const output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>
