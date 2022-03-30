@@ -1,4 +1,4 @@
-/*!
+/*
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
@@ -83,6 +83,9 @@ p {
   margin-bottom: 1rem;
 }
 
+.p-signup {
+  color: #F1441C;
+}
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
