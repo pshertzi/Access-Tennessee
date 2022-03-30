@@ -1266,21 +1266,21 @@ input.input100 {
 /* Extra styles for the cancel button */
 /* Full-width input fields */
 input[type=text], input[type=password] {
-	width: 95%;
+	width: 100%;
 	padding: 15px;
 	margin: 5px 0 22px 0;
-	display: inline-block;
-	border: none;
-	background: #f1f1f1;
+	display:block;
+	/* border: none; */
+	background: #ffffff;
   }
   
-  /* Add a background color when the inputs get focus */
+  /*  the inputs  */
   input[type=text]:focus, input[type=password]:focus {
 	background-color: #ddd;
 	outline: none;
   }
   
-  /* Set a style for all buttons */
+  /*style for all buttons */
   button {
 	background-color: var(--yellow);
 	color: white;
