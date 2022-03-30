@@ -1,16 +1,52 @@
+<head>
+    <link rel="stylesheet" href="/css/userpage.css">
+    <link rel="stylesheet" href="/css/post.css">
+</head>
 
-   
-<section>
-        <li class="nav-item"><a class="nav-link page-scroll" href="/login">Return to user page</a></li>
+  <div class="profile-header">
+        <div class="profile-header-cover"></div>
+        <div class="profile-header-content">
+            <div class="profile-header-img mb-4">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="mb-4" alt="" />
+            </div>
+
+            <div class="profile-header-info">
+                <h4 class="m-t-sm">USER Profile</h4>
+                <p class="m-b-sm">Impairment</p>
+                
+            </div>
+        </div>
+
+        <ul class="profile-header-tab nav nav-tabs">
+            
+            <li class="nav-item"><a class="nav-link page-scroll" href="/login">Return to user page</a></li>
             <li class="nav-item"><a class="nav-link page-scroll" href="/suggestion">View Suggestions</a></li>
             <li class="nav-item"><a class="nav-link page-scroll" href="/business">View Businesses</a></li>
-  <h2 class="title">create new suggestion</h2><hr>
-
-  <form class="new-post-form">
-    <div>
-      <label for="suugest-content">content:</label>
-      <input class="textarea is-large" id="suggest-text"placeholder="insert suggestion"/>
+        </ul>
     </div>
-    <button type="submit" class="button is-primary is-pulled-right">create post</button>
-  </form>
-</section>
+
+
+  <form class="suggestion-form">
+  <div>
+    <textarea name="suggestion-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add suggestion</button>
+  </div>
+</form>
+
+<div class="comments">
+  {{#each suggestion.comments}}
+  <section class="comment">
+    <div class="meta">
+      {{user.username}} on {{created_at}}
+    </div>
+    <div class="text">
+      {{comment_text}}
+    </div>
+  </section>
+  {{/each}}
+</div>
+
+  <script src="/javascript/createsuggestion.js"></script>

@@ -86,10 +86,11 @@ router.get('/:id', (req, res) => {
   
 // Create suggestion (suggestion)
 router.post('/', (req, res) => {
+  if(req.session)
     Suggestion.create({
         suggestion_text: req.body.suggestion_text,
-        user_id: req.body.user_id,
-        business_id: req.body.business_id
+        user_id: req.session.user_id,
+        business_id: req.session.business_id
     })
     .then(dbSuggestionData => res.json(dbSuggestionData))
     .catch(err => {
