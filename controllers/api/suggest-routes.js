@@ -1,12 +1,17 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Suggestion, User, Rate, Comment } = require('../../models');
+const { Suggestion, User, Vote, Comment } = require('../../models');
 
 
 // GET all suggestions
 router.get('/', (req, res) => {
     Suggestion.findAll({
-        attributes: ['id', 'suggestion_text', 'business_id', 'created_at'],
+        attributes: ['id',
+         'suggestion_text',
+          'business_id',
+           'created_at',
+           [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE suggestion.id = vote.suggestion_id)'), 'vote_count']
+            ],
         include: [
             {
                 model: Comment,
@@ -29,12 +34,28 @@ router.get('/', (req, res) => {
     });
 });
 
+router.put('/upvote', (req, res) => {
+  // custom static method created in models/Post.js
+  Suggestion.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+    .then(updatedVoteData => res.json(updatedVoteData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
 router.get('/:id', (req, res) => {
     Suggestion.findOne({
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'suggestion_text', 'business_id', 'created_at'],
+      attributes: ['id',
+       'suggestion_text',
+        'business_id',
+         'created_at',
+         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE suggestion.id = vote.suggestion_id)'), 'vote_count']
+        ],
       include: [
         {
             model: Comment,
@@ -96,16 +117,7 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-// PUT /api/posts/upvote
-router.put('/rating', (req, res) => {
-    Rate.create({
-        user_id: req.body.user_id,
-        suggestion_id: req.body.suggestion_id
-      })
-        .then(dbsuggestionData => res.json(dbsuggestionData))
-        .catch(err => res.json(err));
-        
-});
+
 
 
 module.exports = router

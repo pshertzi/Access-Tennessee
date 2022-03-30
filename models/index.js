@@ -2,7 +2,7 @@ const User = require('./User');
 const Impair = require('./Impair');
 const Suggestion = require('./Suggestion');
 const Business = require('./Business');
-const Rate = require('./Rate');
+const Vote = require('./Vote');
 const Contact = require('./Contacts');
 const Comment = require('./Comment');
 // Associations
@@ -44,5 +44,31 @@ Suggestion.hasMany(Comment, {
     foreignKey: 'suggestion_id'
   });
 
+User.belongsToMany(Suggestion, {
+    through: Vote,
+    as: 'voted_suggestions',
+    foreignKey: 'user_id'
+  });
+Suggestion.belongsToMany(User, {
+    through: Vote,
+    as: 'voted_suggestions',
+    foreignKey: 'suggestion_id'
+});
+Vote.belongsTo(User, {
+  foreignKey: 'user_id'
+});
 
-module.exports = { User, Impair, Suggestion, Business, Rate, Contact, Comment};
+Vote.belongsTo(Suggestion, {
+  foreignKey: 'suggestion_id'
+});
+
+User.hasMany(Vote, {
+  foreignKey: 'user_id'
+});
+
+Suggestion.hasMany(Vote, {
+  foreignKey: 'suggestion_id'
+});
+  
+
+module.exports = { User, Impair, Suggestion, Business, Vote, Contact, Comment};

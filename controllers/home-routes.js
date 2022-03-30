@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Suggestion, User, Comment, Business, Impair } = require('../models');
+const { Suggestion, User, Comment, Business, Impair, Vote } = require('../models');
 
 router.get('/', (req, res) => {
   res.render('homepage');
@@ -37,7 +37,6 @@ router.get('/userpage', (req, res) => {
      'email',
      'description',
      'username',
-     'impairment',
     ],
     include: [
       {
@@ -155,16 +154,21 @@ router.get('/suggestion/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: ['id', 'suggestion_text', 'business_id', 'created_at'],
+    attributes: [
+      'id',
+      'suggestion_text',
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE suggestion.id = vote.suggestion_id)'), 'vote_count']
+    ],
     include: [
       {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'suggestion_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
+        model: Comment,
+        attributes: ['id', 'comment_text', 'suggestion_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
       {
         model: User,
         attributes: ['username']
@@ -176,7 +180,11 @@ router.get('/suggestion/:id', (req, res) => {
         res.status(404).json({ message: 'No suggestion found with this id' });
         return;
       }
-      const suggestion = dbsuggestionData.get({ plain: true});
+
+      // serialize the data
+      const suggestion = dbsuggestionData.get({ plain: true });
+
+      // pass data to template
       res.render('single-suggestion', { suggestion });
     })
     .catch(err => {
@@ -184,9 +192,5 @@ router.get('/suggestion/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
-
-
-
 
 module.exports = router;

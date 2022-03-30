@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Impair, Suggestion, Business } = require('../../models');
+const { User, Impair, Suggestion, Business, Vote, Comment } = require('../../models');
 
 // GET all users
 router.get('/', (req, res) => {
@@ -17,7 +17,14 @@ router.get('/', (req, res) => {
                     model: Business,
                     attributes: ['b_name']
                 }
-            }
+                
+            },
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text'],
+                through: Vote,
+                as: 'voted_suggestions'
+              }
         ]
     })
     .then(dbUserData => res.json(dbUserData))
@@ -42,8 +49,8 @@ router.get('/:id', (req, res) => {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'created_at'],
                 include: {
-                  model: Post,
-                  attributes: ['title']
+                  model: Suggestion,
+                  attributes: ['suggestion_text']
                 }
               },
             {
