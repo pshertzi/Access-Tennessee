@@ -45,11 +45,11 @@ async function b_signupFormHandler(event) {
   const b_email = document.querySelector('#b-email-signup').value.trim();
   const b_password = document.querySelector('#b-password-signup').value.trim();
   const b_description = document.querySelector('#b-description-signup').value.trim();
-  // const impairs = document.querySelector('#impairment');
+  const accommodations = document.querySelector('#b-accommodations').value.trim();
   // const logo_url = document.querySelector('#logo_url').value
   
 
-  if (b_username && b_email && b_password && b_description) {
+  if (b_username && b_email && b_password) {
     const response = await fetch('/api/business', {
       method: 'post',
       body: JSON.stringify({
@@ -57,7 +57,8 @@ async function b_signupFormHandler(event) {
         b_username,
         b_email,
         b_password,
-        b_description
+        b_description,
+        accommodations
       }),
       headers: { 'Content-Type': 'application/json' }
     });
