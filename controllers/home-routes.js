@@ -88,6 +88,7 @@ router.get('/business', (req, res) => {
       'b_name',
       'b_email',
       'b_description',
+      'b_username',
       'accommodations'
     ],
     include: [
