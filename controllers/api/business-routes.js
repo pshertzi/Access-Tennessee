@@ -8,6 +8,10 @@ router.get('/', (req, res) => {
         attributes: { exclude: ['password'] },
         include: [
             {
+                model: Impair,
+                attributes: ['impairment']
+            },
+            {
                 model: Suggestion,
                 attributes: ['suggestion_text', 'created_at'],
                 include: [
@@ -33,6 +37,10 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         include: [
+            {
+                model: Impair,
+                attributes: ['impairment']
+            },
             {
                 model: Suggestion,
                 attributes: ['suggestion_text', 'created_at'],
@@ -65,6 +73,7 @@ router.post('/', (req, res) => {
         b_email: req.body.b_email,
         b_password: req.body.b_password,
         b_description: req.body.b_description,
+        impairment: req.body.impairment,
         accommodations: req.body.accommodations
     })
     .then(dbBusinessData => res.json(dbBusinessData))
