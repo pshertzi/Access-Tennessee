@@ -72,7 +72,9 @@ router.post('/', (req, res) => {
         b_name: req.body.b_name,
         b_email: req.body.b_email,
         b_password: req.body.b_password,
-        b_description: req.body.b_description
+        b_description: req.body.b_description,
+        impairment: req.body.impairment,
+        accommodations: req.body.accommodations
     })
     .then(dbBusinessData => res.json(dbBusinessData))
     .catch(err => {
