@@ -987,7 +987,12 @@ iframe {
 
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
-
+.login-form {
+	margin-top: 5%;
+	width: 25%;
+	color: white;
+	box-shadow: 0 0 2rem 0 rgba(0, 0, 0, .2); 
+}
 .limiter {
   width: 100%;
   margin: 0 auto;
@@ -995,7 +1000,7 @@ iframe {
 
 .container-login100 {
   width: 100%;  
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -1004,7 +1009,7 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 40px 0px 50px 15px;
+  padding: 40px 0px 50px 5px;
   background: var(--main-dark-blue);
 }
 
