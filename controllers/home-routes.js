@@ -37,6 +37,7 @@ router.get('/userpage', (req, res) => {
      'email',
      'description',
      'username',
+     'user_impairment'
     ],
     include: [
       {
@@ -61,6 +62,7 @@ router.get('/userpage', (req, res) => {
         users
       }
       console.log('=====================================')
+      console.log(data);
       res.render('userpage',  data );
     })
     .catch(err => {
