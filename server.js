@@ -10,7 +10,7 @@ const bodyParser = require('body-parser'); //added for nodemail
 const nodemailer = require('nodemailer'); //added for nodemail
 const multiparty = require("multiparty"); // added for nodemail
 require('dotenv').config(); //added for nodemail
-//const Contact = require("./models/contacts.js");
+const Contact = require("./models/contacts.js");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -61,8 +61,7 @@ app.post('/send', (req, res) => {
       <li>Email: ${req.body.email}</li>
     </ul>
     <h3>Message</h3>
-    <p>${req.body.msg}</p>
-  `;
+    <p>${req.body.msg}</p>`;
 
   // var transporter = nodemailer.createTransport({
   //   host: "smtp.mailtrap.io",
