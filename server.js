@@ -64,14 +64,14 @@ app.post('/send', (req, res) => {
     <p>${req.body.msg}</p>
   `;
 
-  var transporter = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
-    auth: {
-      user: "ca2765889d2d23",
-      pass: "0b9ea155e5e3cb"
-    }
-  });
+  // var transporter = nodemailer.createTransport({
+  //   host: "smtp.mailtrap.io",
+  //   port: 2525,
+  //   auth: {
+  //     user: "ca2765889d2d23",
+  //     pass: "0b9ea155e5e3cb"
+  //   }
+  // });
   // create reusable transporter object using the default SMTP transport
   // let transporter = nodemailer.createTransport({
   //   host: 'mail.google.com',
@@ -103,7 +103,7 @@ app.post('/send', (req, res) => {
       console.log('Message sent: %s', info.messageId);   
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('contact', {msg:'Email has been sent.'});
+      res.render('Contacts', {msg:'Message has been sent.'});
   });
   });
   

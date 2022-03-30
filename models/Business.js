@@ -52,6 +52,10 @@ Business.init(
             validate: {
                 isUrl: true
             }
+        },
+        accommodations: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {

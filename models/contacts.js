@@ -26,9 +26,9 @@ Contact.init (
         c_msg: {
             type: DataTypes.STRING,
             allowNull: false,
-        
+
     },
-    
+
 },
 {
     sequelize,

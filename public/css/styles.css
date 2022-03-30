@@ -1004,7 +1004,8 @@ iframe {
 .signup-button-s {
   width: 100%;
   justify-content: center;
-  
+  margin-bottom: -20%;
+  padding-bottom: 2%;
 
 	
 }
@@ -1024,7 +1025,8 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 40px 0px 50px 5px;
+  margin-top: 5%;
+  padding: 60px 0px 50px 5px;
   background: var(--main-dark-blue);
 }
 

@@ -58,11 +58,11 @@
 </script> 
 <script>  
   function favBImpair() {  
-    var mylist = document.getElementById("b-impairment-signup");  
+    var mylist = document.getElementById("b-accommodations");  
     document.getElementById("bfavorite").value = mylist.options[mylist.selectedIndex].text;  
   }  
 </script>
-      
+
 
 <form class="signup-form" id="sign-up">
 
@@ -149,24 +149,23 @@
             <label for="b-description-signup"><b>Bio</b></label>
             <input type="text" id="b-description-signup" placeholder="Enter Bio"/>
         </div>
-            <label for="impairment"> <b> Select an impairment you would like to see accommodations for: </b> </label>
-        <select id = "b-impairment-signup" onchange = "favBImpair()" >  
-          <option> </option>  
-          <option> Hearing Impairment </option>  
-          <option> Vision Impairment </option>  
-          <option> Mobility Impairment </option>  
-          <option> Neurological Impairment </option> 
-          <option> Cognitive Impairment </option>
-          <option> Medical Impairment </option>
-          <option> Psychological Impairment </option>
-        </select>  
-        <input type = "text" id = "bfavorite" size = "20" </p> 
+            <label for="b-accommodations"> <b> Select an impairment you would like to see accommodations for: </b> </label>
+              <select id = "b-accommodations" onchange = "favBImpair()" >  
+                <option> </option>  
+                <option> Hearing Impairment </option>  
+                <option> Vision Impairment </option>  
+                <option> Mobility Impairment </option>  
+                <option> Neurological Impairment </option> 
+                <option> Cognitive Impairment </option>
+                <option> Medical Impairment </option>
+                <option> Psychological Impairment </option>
+              </select>  
+              <input type = "text" id = "bfavorite" size = "20" </p> 
             <button type="submit">signup</button>
         </div>
         </div>
     </div>
 </form>
-
 
 
 <script src="/javascript/signIn.js"></script>
