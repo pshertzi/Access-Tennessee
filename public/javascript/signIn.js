@@ -10,8 +10,8 @@ async function signupFormHandler(event) {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
   const description = document.querySelector('#description-signup').value.trim();
-  // const impairment = document.querySelector('#impairment-signup').value.trim();
-  // const picture_url = document.querySelector('#image-signup').value.trim()
+  const impairment = document.querySelector('#impairment-signup').value.trim();
+  const picture_url = document.querySelector('#image-signup').value.trim()
   
 
   if (username && email && password) {
@@ -24,8 +24,8 @@ async function signupFormHandler(event) {
         email,
         password,
         description,
-        // impairment,
-        // picture_url
+        impairment,
+        picture_url
       }),
       headers: { 'Content-Type': 'application/json' }
     });
@@ -70,9 +70,28 @@ async function b_signupFormHandler(event) {
   }
 }
 
+function toggleBSignup() {
+  var b_signup = document.getElementById('b-sign-up');
+  var signup = document.getElementById('sign-up')
 
+  if(b_signup.style.display === "none"){
+    b_signup.style.display = "block"
+    signup.style.display = 'none'
+  } else {
+    b_signup.style.display = 'none'
+  }
+}
+function toggleSignup() {
+  var signup = document.getElementById('sign-up');
+  var b_signup = document.getElementById('b-sign-up');
 
-
+  if(signup.style.display === "none") {
+    signup.style.display = 'block'
+    b_signup.style.display = 'none'
+  } else {
+    signup.style.display = 'block'
+  }
+}
 
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 document.querySelector('.b-signup-form').addEventListener('submit', b_signupFormHandler);
