@@ -55,6 +55,10 @@ User.init(
         picture_url: {
             type: DataTypes.STRING,
             allowNull: true,
+        },
+        user_impairment: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     },
     {
