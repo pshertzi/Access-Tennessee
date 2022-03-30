@@ -109,15 +109,15 @@ router.post('/b-login', (req, res) => {
     });
 });
 //log out
-router.post('/blogout', (req, res) => {
+router.post('/logout', (req, res) => {
     if (req.session.b_loggedIn) {
         req.session.destroy(() => {
-            res.status(204).end();
+          res.status(204).end();
         });
-    }
-    else {
+      }
+      else {
         res.status(404).end();
-    }    
+      }    
 });
 // Update business info (PUT)
 router.put('/:id', (req, res) => {
