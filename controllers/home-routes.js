@@ -34,9 +34,14 @@ router.get('/userpage', (req, res) => {
       'id',
       'first_name',
       'last_name',
+<<<<<<< HEAD
      'email',
      'description',
      'username',
+=======
+      'email',
+      'description'
+>>>>>>> develop
     ],
     include: [
       {
@@ -55,8 +60,8 @@ router.get('/userpage', (req, res) => {
       }
     ]
   })
-    .then(dbuserData => {
-      const users = dbuserData.map(User => User.get({ plain: true }));
+    .then(dbUserData => {
+      const users = dbUserData.map(User => User.get({ plain: true }));
       const data = {
         users
       }
@@ -73,6 +78,9 @@ router.get('/userpage', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('signup');
 });
+router.get('/bsignup', (req, res) => {
+  res.render('bsignup');
+})
 
 
 

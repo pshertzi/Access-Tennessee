@@ -9,13 +9,12 @@ const impairData = [
     {
         impairment: 'Vision Impairment',
         user_id: 2,
-        business_id: 2,
-        business_id: 3
+        business_id: 2
     },
     {
         impairment: 'Mobility Impairment',
         user_id: 3,
-        business_id: 3
+        business_id: 3,
     },
     {
         impairment: 'Neurological Impairment',

@@ -72,8 +72,9 @@ body {
   overflow: hidden;
 }
 .profile-header .profile-header-cover {
-  background: url(https://bootdey.com/img/Content/bg1.jpg) center no-repeat;
+  /* background: url(https://bootdey.com/img/Content/bg1.jpg) center no-repeat; */
   background-size: 100% auto;
+  background-color: #F1441C;
   position: absolute;
   left: 0;
   right: 0;
