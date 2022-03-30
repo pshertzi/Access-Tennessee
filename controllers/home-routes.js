@@ -229,7 +229,8 @@ router.get('/createsuggestion/',(req, res) => {
     .then(dbsuggestionData => {
       // serialize data before passing to template
       const suggestions = dbsuggestionData.map(suggestion => suggestion.get({ plain: true }));
-      res.render('createsuggestion', { suggestions, loggedIn: true });
+      console.log(suggestions);
+      res.render('createsuggestion', { suggestions});
     })
     .catch(err => {
       console.log(err);
