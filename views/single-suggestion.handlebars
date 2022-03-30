@@ -18,9 +18,9 @@
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav ml-auto">
                     
-                    <li class="nav-item">
+                    <li class="nav-item user-nav">
                         <button class="nav-link page-scroll" id="logout">logout</button>
-                        
+                        <!--this needs to be debugged. either change button functionality to <a> or idk-->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="/suggestion">View Suggestions</a>
@@ -45,12 +45,12 @@
     </nav> <!-- end of navbar -->
     <!-- end of navigation -->
         <!-- Header -->
-    <div class="header">
-        <div class="ocean">
+    <div class="user-header">
+        {{!-- <div class="ocean">
             <div class="wave"></div>
             <div class="wave"></div>
         </div>
-        
+         --}}
     </div> <!-- end of header -->
 <div class="container">
 <div id="content" class="content p-0">
@@ -70,57 +70,46 @@
 
         <ul class="profile-header-tab nav nav-tabs">
             
-            <li class="nav-item"><a href="#profile-friends" class="nav-link active show" data-toggle="tab">Users</a></li>
+            <li class="nav-item"><a class="nav-link page-scroll" href="/login">Return to user page</a></li>
             <li class="nav-item"><a class="nav-link page-scroll" href="/suggestion">View Suggestions</a></li>
             <li class="nav-item"><a class="nav-link page-scroll" href="/business">View Businesses</a></li>
         </ul>
     </div>
 
-    <div class="profile-container">
-        <div class="row row-space-20">
-            <div class="col-md-8">
-                <div class="tab-content p-0">
-
-                    <div class="tab-pane fade active show" id="profile-friends">
-                        <article class="suggestion">
-                            <div class="title">
-                              <h4>{{suggestion.suggestion_text}} </h4>
-                            </div>
-                            <div class="meta">
-                              {{suggestion.vote_count}} point(s) created by {{suggestion.user.username}} on
-                              {{suggestion.created_at}}
-                              |
-                              <a href="/suggestion/{{suggestion.id}}">{{suggestion.comments.length}} comment(s)</a>
-                            </div>
-                            <form class="comment-form">
-                            <div>
-                              <textarea name="comment-body"></textarea>
-                            </div>
-
-                            <div>
-                              <button type="submit">add comment</button>
-                              <button type="button" class="upvote-btn">upvote</button>
-                            </div>
-                          </form>
-
-                          <div class="comments">
-                            {{#each suggestion.comments}}
-                            <section class="comment">
-                              <div class="meta">
-                                {{user.username}} on {{created_at}}
-                              </div>
-                              <div class="text">
-                                {{comment_text}}
-                              </div>
-                            </section>
-                            {{/each}}
-                          </div>
-                          </article>
-                    </div>            
-                </div>
-            </div>
-        </div>
+<article class="suggestion">
+    <div class="title">
+        <h4>{{suggestion.suggestion_text}} </h4>
     </div>
+    <div class="meta">
+        {{suggestion.vote_count}} point(s) created by {{suggestion.user.username}} on
+        {{suggestion.created_at}}
+                              |
+        <a href="/suggestion/{{suggestion.id}}">{{suggestion.comments.length}} comment(s)</a>
+     </div>
+    <form class="comment-form">
+        <div>
+            <textarea name="comment-body"></textarea>
+         </div>
+
+        <div>
+            <button type="submit">add comment</button>
+            <button type="button" class="upvote-btn">upvote</button>
+        </div>
+    </form>
+
+    <div class="comments">
+        {{#each suggestion.comments}}
+        <section class="comment">
+            <div class="meta">
+                {{user.username}} on {{created_at}}
+            </div>
+            <div class="text">
+                {{comment_text}}
+            </div>
+        </section>
+        {{/each}}
+    </div>
+</article>
 
          
 <!-- Footer -->

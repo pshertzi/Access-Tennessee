@@ -34,14 +34,9 @@ router.get('/userpage', (req, res) => {
       'id',
       'first_name',
       'last_name',
-<<<<<<< HEAD
      'email',
      'description',
      'username',
-=======
-      'email',
-      'description'
->>>>>>> develop
     ],
     include: [
       {
@@ -126,7 +121,12 @@ router.get('/business', (req, res) => {
 
 router.get('/suggestion', (req, res) => {
   Suggestion.findAll({
-    attributes: ['id', 'suggestion_text', 'business_id', 'created_at'],
+    attributes: ['id',
+     'suggestion_text',
+      'business_id',
+       'created_at',
+       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE suggestion.id = vote.suggestion_id)'), 'vote_count']
+      ],
     include: [
         {
             model: Comment,
