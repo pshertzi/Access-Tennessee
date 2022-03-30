@@ -22,8 +22,8 @@ const seedAll = async () => {
     await seedSuggestion();
     console.log('\n----- SUGGESTIONS SEEDED -----\n');
 
-    await seedComment();
-    console.log('\n----- COMMENT SEEDED -----\n');
+    // await seedComment();
+    // console.log('\n----- COMMENT SEEDED -----\n');
 
     process.exit(0);
 };

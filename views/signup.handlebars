@@ -1,67 +1,26 @@
-<body data-spy="scroll" data-target=".fixed-top">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-        <div class="container">
-            
-            
-            <a class="navbar-brand logo-text page-scroll" href="/">Access Tennessee</a>
-
-        
-            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav ml-auto">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="/b-login">Business Login</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="/signup">Create Account</a>
-                    </li>
-                    
-                </ul>
-                <span class="nav-item social-icons">
-                    <span class="fa-stack">
-                        <a href="https://www.facebook.com" target="_blank">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-facebook-f fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <span class="fa-stack">
-                        <a href="https://www.twitter.com" target="_blank">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-twitter fa-stack-1x"></i>
-                        </a>
-                    </span>
-                </span>
-            </div> <!-- end of navbar-collapse -->
-        </div> <!-- end of container -->
-    </nav> <!-- end of navbar -->
-    <!-- end of navigation -->
-    
-    <!-- Header -->
-    <div class="user-header">
-        {{!-- <div class="ocean">
-            <div class="wave"></div>
-            <div class="wave"></div>
-        </div> --}}
-
-    </div> <!-- end of header -->
-
-
-<form class="signup-form" id="sign-up">
-  <div class="container-login100">
-    <div class="wrap-login10">
-      <h1> 
+<script>  
+  function favImpair() {  
+    var mylist = document.getElementById("impairment-signup");  
+    document.getElementById("favorite").value = mylist.options[mylist.selectedIndex].text;  
+  }  
+</script> 
+<script>  
+  function favBImpair() {  
+    var mylist = document.getElementById("b-impairment-signup");  
+    document.getElementById("bfavorite").value = mylist.options[mylist.selectedIndex].text;  
+  }  
+</script>
+      <h3> 
         <ul class="profile-header-tab nav nav-tabs">
           <button onclick="toggleSignup()">User Sign Up </button>
           <button onclick="toggleBSignup()">Business Sign Up</button>
         </ul>
-      </h1>
-    <p class="p-signup">Please fill in this form to create an account.</p>
+      </h3>
+<form class="signup-form" id="sign-up">
+  <div class="container-login100">
+    <div class="wrap-login10">
+      <h1> User Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
     <hr>
       <div>
         <label for="first_name"><b>First Name</b></label>
@@ -88,14 +47,23 @@
         <label for="description"><b>Tell us about yourself: </b></label>
         <input type="text" id="description-signup" placeholder="Enter Bio" />
       </div>
-      <div>
-        <label for="impairment"><b>Impairment</b></label>
-        <input type="text" id="impairment-signup" placeholder="Enter impairment" not required />
-      </div> 
-      <label for="picture"><b>Select Profile Picture:</b></label>
+
+    <label for="impairment"> <b> Select an impairment you would like to see accommodations for: </b> </label>
+        <select id = "impairment-signup" onchange = "favImpair()" >  
+          <option> </option>  
+          <option> Hearing Impairment </option>  
+          <option> Vision Impairment </option>  
+          <option> Mobility Impairment </option>  
+          <option> Neurological Impairment </option> 
+          <option> Cognitive Impairment </option>
+          <option> Medical Impairment </option>
+          <option> Psychological Impairment </option>
+        </select>  
+        <input type = "text" id = "favorite" size = "20" </p>  
+      {{!-- <label for="picture"><b>Select Profile Picture:</b></label>
           <input id="image-signup" type="file" name="profile_photo" placeholder="Photo" required="" capture> 
-      <div>
-        <button type="submit">Signup</button>
+      <div> --}}
+        <button type="submit">signup</button>
       </div>
     </div>
   </div>
@@ -103,11 +71,8 @@
 <form class="b-signup-form" id="b-sign-up" >
     <div class="container-login100">
         <div class="wrap-login10">
-          <ul class="profile-header-tab nav nav-tabs">
-            <button onclick="toggleSignup()" >User Sign Up </button>
-            <button onclick="toggleBSignup()">Business Sign Up</button>
-        </ul>
-        <p style="color: #F1441C;">Please fill in this form to create an account.</p>
+          <h1> Business Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
         <hr>
         <div>
             <label for="b-name-signup"><b>Business Name</b></label>
@@ -130,41 +95,19 @@
             <label for="b-description-signup"><b>Bio</b></label>
             <input type="text" id="b-description-signup" placeholder="Enter Bio"/>
         </div>
-        <div>
-            <label for="logo-url-signup"><b>Select Profile Picture:</b></label>
-            <input id="logo-url-signup" type="file" name="logo_url" placeholder="Photo" required="" capture>
-        </div> 
-        <div>
-            <h6>Types of accommodations:</h6>
-              <label for="impairment"> Hearing Impairment </label>
-                <input id="impairment" type="checkbox">
-                <span class="checkmark"></span>
-              
-              <label for="impairment">Vision Impairment </label>
-                <input id="impairment" type="checkbox">
-                <span class="checkmark"></span>
-              
-              <label for="impairment">Mobility Impairment </label>
-                <input id="impairment" type="checkbox">
-                <span class="checkmark"></span>
-              
-              <label for="impairment">Neurological Impairment </label>
-                <input id="impairment" type="checkbox">
-                <span class="checkmark"></span>
-
-              <label for="impairment">Cognitive Impairment </label>
-                <input id="impairment" type="checkbox">
-                <span class="checkmark"></span>
-
-              <label for="impairment">Medical </label>
-                <input id="impairment" type="checkbox">
-                <span class="checkmark"></span>
-
-              <label for="impairment">Psychological </label>
-                <input id="impairment" type="checkbox">
-                <span class="checkmark"></span>
-              </label>
-            <button type="submit">Signup</button>
+            <label for="impairment"> <b> Select an impairment you would like to see accommodations for: </b> </label>
+        <select id = "b-impairment-signup" onchange = "favBImpair()" >  
+          <option> </option>  
+          <option> Hearing Impairment </option>  
+          <option> Vision Impairment </option>  
+          <option> Mobility Impairment </option>  
+          <option> Neurological Impairment </option> 
+          <option> Cognitive Impairment </option>
+          <option> Medical Impairment </option>
+          <option> Psychological Impairment </option>
+        </select>  
+        <input type = "text" id = "bfavorite" size = "20" </p> 
+            <button type="submit">signup</button>
         </div>
         </div>
     </div>
