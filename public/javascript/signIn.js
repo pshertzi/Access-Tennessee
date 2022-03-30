@@ -24,8 +24,8 @@ async function signupFormHandler(event) {
         email,
         password,
         description,
-        impairment,
-        picture_url
+        // impairment,
+        // picture_url
       }),
       headers: { 'Content-Type': 'application/json' }
     });
