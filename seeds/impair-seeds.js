@@ -15,7 +15,6 @@ const impairData = [
         impairment: 'Mobility Impairment',
         user_id: 3,
         business_id: 3,
-        business_id: 1
     },
     {
         impairment: 'Neurological Impairment',
