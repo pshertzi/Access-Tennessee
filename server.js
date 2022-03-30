@@ -10,7 +10,7 @@ const bodyParser = require('body-parser'); //added for nodemail
 const nodemailer = require('nodemailer'); //added for nodemail
 const multiparty = require("multiparty"); // added for nodemail
 require('dotenv').config(); //added for nodemail
-const Contact = require("./models/contacts.js");
+//const Contact = require("./models/contacts.js");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
