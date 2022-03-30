@@ -993,6 +993,21 @@ iframe {
 	color: white;
 	box-shadow: 0 0 2rem 0 rgba(0, 0, 0, .2); 
 }
+
+.signup-form-2 {
+	margin-top: 5%;
+	width: 60%;
+	color: white;
+	box-shadow: 0 0 2rem 0 rgba(0, 0, 0, .2); 
+}
+
+.signup-button-s {
+  width: 100%;
+  justify-content: center;
+  
+
+	
+}
 .limiter {
   width: 100%;
   margin: 0 auto;
