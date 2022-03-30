@@ -4,7 +4,7 @@ const Suggestion = require('./Suggestion');
 const Business = require('./Business');
 const Vote = require('./Vote');
 const Comment = require('./Comment');
-const Contact = require('./Contacts');
+const Contact = require('./contacts');
 
 // Associations
 User.hasMany(Impair, {
