@@ -1,3 +1,55 @@
+<body data-spy="scroll" data-target=".fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+        <div class="container">
+            
+            
+            <a class="navbar-brand logo-text page-scroll" href="/">Access Tennessee</a>
+
+        
+            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/b-login">Business Login</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/signup">Create Account</a>
+                    </li>
+                    
+                </ul>
+                <span class="nav-item social-icons">
+                    <span class="fa-stack">
+                        <a href="https://www.facebook.com" target="_blank">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-facebook-f fa-stack-1x"></i>
+                        </a>
+                    </span>
+                    <span class="fa-stack">
+                        <a href="https://www.twitter.com" target="_blank">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-twitter fa-stack-1x"></i>
+                        </a>
+                    </span>
+                </span>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    
+    <!-- Header -->
+    <div class="user-header">
+        {{!-- <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div> --}}
+
+    </div> <!-- end of header -->
 <script>  
   function favImpair() {  
     var mylist = document.getElementById("impairment-signup");  
@@ -10,45 +62,47 @@
     document.getElementById("bfavorite").value = mylist.options[mylist.selectedIndex].text;  
   }  
 </script>
-      <h3> 
-        <ul class="profile-header-tab nav nav-tabs">
-          <button onclick="toggleSignup()">User Sign Up </button>
-          <button onclick="toggleBSignup()">Business Sign Up</button>
-        </ul>
-      </h3>
+      
+
 <form class="signup-form" id="sign-up">
+
+        {{!-- <ul class="profile-header-tab nav nav-tabs signup-button-s"> --}}
+          {{!-- <button class="signup-button-s" onclick="toggleSignup()">User Sign Up </button> --}}
+          <button class="signup-button-s" onclick="toggleBSignup()">Business Sign Up</button>
+        {{!-- </ul> --}}
+    
   <div class="container-login100">
     <div class="wrap-login10">
       <h1> User Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
+    <p style="color: #F1441C;">Please fill in this form to create an account.</p>
     <hr>
       <div>
-        <label for="first_name"><b>First Name</b></label>
+        <label class="user-h4" for="first_name"><b>First Name</b></label>
         <input type="text" placeholder="Enter first name" id="firstname-signup" />
       </div>
       <div>
-        <label for="last_name"><b>Last Name</b></label>
+        <label class="user-h4" for="last_name"><b>Last Name</b></label>
         <input type="text" placeholder="Enter last name" id="lastname-signup" />
       </div>
       <div>
-        <label for="username"><b>Username</b></label>
+        <label class="user-h4" for="username"><b>Username</b></label>
         <input type="text" id="username-signup" placeholder="Enter username" />
       </div>
       
       <div>
-        <label for="email"><b>Email</b></label>
+        <label class="user-h4" for="email"><b>Email</b></label>
         <input type="text" id="email-signup" placeholder="Enter Email" />
       </div>
       <div>
-        <label for="password"><b>Password</b></label>
+        <label class="user-h4" for="password"><b>Password</b></label>
         <input type="password" id="password-signup" placeholder="Enter Password"/>
       </div>
       <div>
-        <label for="description"><b>Tell us about yourself: </b></label>
+        <label class="user-h4" for="description"><b>Tell us about yourself: </b></label>
         <input type="text" id="description-signup" placeholder="Enter Bio" />
       </div>
 
-    <label for="impairment"> <b> Select an impairment you would like to see accommodations for: </b> </label>
+    <label class="user-h4" for="impairment"> <b> Select an impairment you would like to see accommodations for: </b> </label>
         <select id = "impairment-signup" onchange = "favImpair()" >  
           <option> </option>  
           <option> Hearing Impairment </option>  
@@ -63,7 +117,7 @@
       {{!-- <label for="picture"><b>Select Profile Picture:</b></label>
           <input id="image-signup" type="file" name="profile_photo" placeholder="Photo" required="" capture> 
       <div> --}}
-        <button type="submit">signup</button>
+        <button type="submit">Signup</button>
       </div>
     </div>
   </div>
@@ -116,5 +170,43 @@
 
 
 <script src="/javascript/signIn.js"></script>
+
+<!-- Footer -->
+    <!--social media icons are not connected to links-->
+    <div class="footer sm-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="social-container">
+                        <span class="fa-stack">
+                            <a href="https://www.facebook.com" target="_blank">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook-f fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="https://www.twitter.com" target="_blank">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="https://www.instagram.com" target="_blank">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-instagram fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="https://www.youtube.com" target="_blank">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-youtube fa-stack-1x"></i>
+                            </a>
+                        </span>
+                    </div> <!-- end of social-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of footer -->  
+    <!-- end of footer -->
 
 
