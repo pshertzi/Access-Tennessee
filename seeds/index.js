@@ -4,6 +4,7 @@ const seedImpair = require('./impair-seeds');
 const seedSuggestion = require('./suggest-seeds');
 
 const sequelize = require('../config/connection');
+const seedComments = require('./comment-seeds');
 
 const seedAll = async () => {
     await sequelize.sync({ force: true });

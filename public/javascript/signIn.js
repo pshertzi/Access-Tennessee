@@ -10,8 +10,8 @@ async function signupFormHandler(event) {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
   const description = document.querySelector('#description-signup').value.trim();
-  const impairment = document.querySelector('#impairment-signup').value.trim();
-  const picture_url = document.querySelector('#image-signup').value.trim()
+  // const impairment = document.querySelector('#impairment-signup').value.trim();
+  // const picture_url = document.querySelector('#image-signup').value.trim()
   
 
   if (username && email && password) {
@@ -24,8 +24,8 @@ async function signupFormHandler(event) {
         email,
         password,
         description,
-        impairment,
-        picture_url
+        // impairment,
+        // picture_url
       }),
       headers: { 'Content-Type': 'application/json' }
     });
@@ -45,11 +45,11 @@ async function b_signupFormHandler(event) {
   const b_email = document.querySelector('#b-email-signup').value.trim();
   const b_password = document.querySelector('#b-password-signup').value.trim();
   const b_description = document.querySelector('#b-description-signup').value.trim();
-  const impairs = document.querySelector('#impairment');
+  // const impairs = document.querySelector('#impairment');
   // const logo_url = document.querySelector('#logo_url').value
   
 
-  if (b_username && b_email && b_password && b_description && impairs) {
+  if (b_username && b_email && b_password && b_description) {
     const response = await fetch('/api/business', {
       method: 'post',
       body: JSON.stringify({
@@ -57,8 +57,7 @@ async function b_signupFormHandler(event) {
         b_username,
         b_email,
         b_password,
-        b_description,
-        impairs,
+        b_description
       }),
       headers: { 'Content-Type': 'application/json' }
     });
