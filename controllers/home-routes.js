@@ -200,42 +200,6 @@ router.get('/suggestion/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-router.get('/createsuggestion/',(req, res) => {
-  Suggestion.findAll({
-    where: {
-      // use the ID from the session
-      user_id: req.session.user_id
-    },
-    attributes: [
-      'id',
-      'created_at',
-      'suggestion_text'
-    ],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'suggestion_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-    .then(dbsuggestionData => {
-      // serialize data before passing to template
-      const suggestions = dbsuggestionData.map(suggestion => suggestion.get({ plain: true }));
-      console.log(suggestions);
-      res.render('createsuggestion', { suggestions});
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+
 
 module.exports = router;
