@@ -1,5 +1,5 @@
 async function blogout() {
-    const response = await fetch('/api/business/logout', {
+    const response = await fetch('/api/users/logout', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' }
     });

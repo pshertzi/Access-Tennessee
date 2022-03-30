@@ -110,14 +110,14 @@ router.post('/b-login', (req, res) => {
 });
 //log out
 router.post('/logout', (req, res) => {
-    if (req.session.b_loggedIn) {
+    if (req.session.loggedIn) {
         req.session.destroy(() => {
           res.status(204).end();
         });
       }
       else {
         res.status(404).end();
-      }    
+      }
 });
 // Update business info (PUT)
 router.put('/:id', (req, res) => {
