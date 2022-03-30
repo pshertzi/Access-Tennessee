@@ -3,7 +3,7 @@ const Impair = require('./Impair');
 const Suggestion = require('./Suggestion');
 const Business = require('./Business');
 const Vote = require('./Vote');
-const Contact = require('./contacts');
+const Contacts = require('./Contacts');
 const Comment = require('./Comment');
 // Associations
 User.hasMany(Impair, {
@@ -69,6 +69,9 @@ User.hasMany(Vote, {
 Suggestion.hasMany(Vote, {
   foreignKey: 'suggestion_id'
 });
-  
 
-module.exports = { User, Impair, Suggestion, Business, Vote, Contact, Comment};
+// Contacts.belongsTo(Contacts, {
+//   foreignKey: 'c_id'
+// });
+
+module.exports = { User, Impair, Suggestion, Business, Vote, Contacts, Comment};

@@ -8,9 +8,9 @@ const Sequilizestore = require('connect-session-sequelize')(session.Store);
 //Node mail
 const bodyParser = require('body-parser'); //added for nodemail
 const nodemailer = require('nodemailer'); //added for nodemail
-//const multiparty = require("multiparty"); // added for nodemail
+const multiparty = require("multiparty"); // added for nodemail
 require('dotenv').config(); //added for nodemail
-const Contact = require("./models/contacts.js");
+const Contacts = require("./models/Contacts.js");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -102,7 +102,7 @@ app.post('/send', (req, res) => {
       console.log('Message sent: %s', info.messageId);   
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('contact', {msg:'Email has been sent.'});
+      res.render('Contacts', {msg:'Email has been sent.'});
   });
   });
   
