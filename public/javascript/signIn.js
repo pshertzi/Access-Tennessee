@@ -46,6 +46,7 @@ async function b_signupFormHandler(event) {
   const b_password = document.querySelector('#b-password-signup').value.trim();
   const b_description = document.querySelector('#b-description-signup').value.trim();
   const accommodations = document.querySelector('#b-accommodations').value.trim();
+  const suggestions = document.querySelector('#b-suggestion').value.trim();
   // const logo_url = document.querySelector('#logo_url').value
   
 
@@ -58,7 +59,8 @@ async function b_signupFormHandler(event) {
         b_email,
         b_password,
         b_description,
-        accommodations
+        accommodations,
+        suggestions
       }),
       headers: { 'Content-Type': 'application/json' }
     });

@@ -1,16 +1,16 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Suggestion, User, Vote, Comment } = require('../../models');
+const { Suggestion, User, Vote, Comment, Business } = require('../../models');
 
 
 // GET all suggestions
 router.get('/', (req, res) => {
     Suggestion.findAll({
         attributes: ['id',
-         'suggestion_text',
+          'suggestion_text',
           'business_id',
-           'created_at',
-           [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE suggestion.id = vote.suggestion_id)'), 'vote_count']
+          'created_at',
+          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE suggestion.id = vote.suggestion_id)'), 'vote_count']
             ],
         include: [
             {
@@ -24,6 +24,10 @@ router.get('/', (req, res) => {
             {
               model: User,
               attributes: ['username']
+            },
+            {
+              model: Business,
+              attributes: ['b_name']
             }
           ]
     })
@@ -51,10 +55,10 @@ router.get('/:id', (req, res) => {
         id: req.params.id
       },
       attributes: ['id',
-       'suggestion_text',
+        'suggestion_text',
         'business_id',
-         'created_at',
-         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE suggestion.id = vote.suggestion_id)'), 'vote_count']
+        'created_at',
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE suggestion.id = vote.suggestion_id)'), 'vote_count']
         ],
       include: [
         {

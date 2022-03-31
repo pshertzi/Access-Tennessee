@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
                 attributes: ['suggestion_text'],
                 through: Vote,
                 as: 'voted_suggestions'
-              }
+            }
         ]
     })
     .then(dbUserData => res.json(dbUserData))

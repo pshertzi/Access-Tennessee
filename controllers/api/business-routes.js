@@ -20,6 +20,12 @@ router.get('/', (req, res) => {
                         attributes: ['username']
                     }
                 ]
+            },
+            {
+                model: Suggestion,
+                attributes: ['suggestion_text'],
+                through: Vote,
+                as: 'voted_suggestions'
             }
         ]
     })
@@ -74,7 +80,8 @@ router.post('/', (req, res) => {
         b_password: req.body.b_password,
         b_description: req.body.b_description,
         impairment: req.body.impairment,
-        accommodations: req.body.accommodations
+        accommodations: req.body.accommodations,
+        suggestion_text: req.body.suggestion_text
     })
     .then(dbBusinessData => res.json(dbBusinessData))
     .catch(err => {
@@ -111,15 +118,15 @@ router.post('/b-login', (req, res) => {
     });
 });
 //log out
-router.post('/logout', (req, res) => {
+router.post('/blogout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
-          res.status(204).end();
+        res.status(204).end();
         });
-      }
-      else {
+    }
+    else {
         res.status(404).end();
-      }
+    }
 });
 // Update business info (PUT)
 router.put('/:id', (req, res) => {

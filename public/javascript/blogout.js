@@ -1,5 +1,5 @@
 async function blogout() {
-    const response = await fetch('/api/business/logout', {
+    const response = await fetch('/api/business/blogout', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' }
     });
@@ -11,4 +11,4 @@ async function blogout() {
     }
 }
 
-document.querySelector('#blogout').addEventListener('click', blogout);
+// document.querySelector('#blogout').addEventListener('click', blogout);
