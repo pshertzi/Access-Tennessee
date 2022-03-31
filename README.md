@@ -25,6 +25,6 @@ Currently accepting contributions from developers. Please email us (see informat
 Here the video: [Access Tennessee functionality] (https://drive.google.com/file/d/1AkculKov3gLywEzlW_NL1WtkCPAdmrZ-/view?usp=sharing)
 <a name="questions"></a>
 ## Questions
-If you have any questions, feel free to reach out at: [Tanya's GitHub](https://github.com/tanyaleepr), [Ashley's Github](https://github.com/ashleyhodge) or [Paul's Github] (https://github.com/pshertzi).
+If you have any questions, feel free to reach out at: [Tanya's GitHub](https://github.com/tanyaleepr), [Ashley's Github](https://github.com/ashleyhodge) or [Paul's Github](https://github.com/pshertzi).
 ## Heroku
-We had issues with some of the node dependencies on replit, therefore we launched the app on Heroku as well. Here the link, enjoy:https://access-tennesee.herokuapp.com/
+https://access-tennesee.herokuapp.com/
