@@ -61,8 +61,6 @@ router.get('/userpage', (req, res) => {
       const data = {
         users
       }
-      console.log('=====================================')
-      console.log(data);
       res.render('userpage',  data );
     })
     .catch(err => {
@@ -110,11 +108,9 @@ router.get('/business', (req, res) => {
   })
   .then(dbBusinessData => {
     const businesses = dbBusinessData.map(business => business.get({ plain: true }));
-    // console.log(typeof businesses)
     const data = {
       businesses
     }
-    console.log(data);
     res.render('business', data);
   })
   .catch(err => {
@@ -124,7 +120,7 @@ router.get('/business', (req, res) => {
 });
 
 router.get('/suggestion', (req, res) => {
-  Suggestion.findAll({
+  Suggestion.findAll({ order : [['created_at', 'DESC']],
     attributes: ['id',
      'suggestion_text',
       'business_id',
@@ -151,7 +147,6 @@ router.get('/suggestion', (req, res) => {
   const data = {
     suggestions
   }
-  console.log('========================================');
   console.log(data);
   res.render('suggestion', data);
 })
