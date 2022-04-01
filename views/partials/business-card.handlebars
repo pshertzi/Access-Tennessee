@@ -1,32 +1,25 @@
     <li>
-    <div class="member-entry"> 
-        {{!-- <a href="#" class="member-img">  --}}
-            {{!-- <img src="{{logo_url}}" class="img-rounded">  --}}
-            {{!-- <i class="fa fa-forward"></i> 
-        </a>  --}}
+    <div class="member-entry m-2 "> 
         <div class="member-details"> 
             <h4>{{b_name}}</h4> 
             <p>{{b_username}}</p>
             <div class="row info-list"> 
                 <div class="col-sm-4"> 
-                    <i class="fa fa-briefcase"> Who we are:</i>
-                    <br>
+                    <h6>Who we are:</h6>
                     {{b_description}}
                 </div> 
                 
                 <div class="col-sm-4"> 
-                    <i class="fa fa-envelope"> How to reach us:</i> 
-                    <br>
+                    <h6>How to reach us:</h6>
                     <a href="#">{{b_email}}</a> 
                 </div> 
                 <div class="col-sm-4"> 
-                    <i class="fa fa-briefcase"> Accommodations for:</i>
+                    <h6>Accommodations for:</h6> 
                     <br>
-                    <p> {{impairs.[0].impairment}}{{accommodations}}</p>
+                    <p> {{accommodations}}</p>
                 </div>
-                <div class="col-sm-4"> 
-                    <i class="fa fa-handshake-angle"> User Suggestions:</i>
-                    <br>
+                <div class="col-sm-10 text-center"> 
+                    <h6>User Suggestions:</h6>
                     <p>{{ suggestions.[0].suggestion_text}}</p>
                 </div>
             </div> 

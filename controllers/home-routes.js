@@ -34,10 +34,10 @@ router.get('/userpage', (req, res) => {
       'id',
       'first_name',
       'last_name',
-     'email',
-     'description',
-     'username',
-     'user_impairment'
+      'email',
+      'description',
+      'username',
+      'user_impairment'
     ],
     include: [
       {
@@ -88,6 +88,7 @@ router.get('/business', (req, res) => {
       'b_name',
       'b_email',
       'b_description',
+      'b_username',
       'accommodations'
     ],
     include: [
