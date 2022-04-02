@@ -10,7 +10,7 @@ async function signupFormHandler(event) {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
   const description = document.querySelector('#description-signup').value.trim();
-  const user_impairment = document.querySelector('#impairment-signup').value.trim();
+  //const user_impairment = document.querySelector('#impairment-signup').value.trim();
   // const picture_url = document.querySelector('#image-signup').value.trim()
   
 
@@ -24,7 +24,7 @@ async function signupFormHandler(event) {
         email,
         password,
         description,
-        user_impairment,
+        //user_impairment,
         // picture_url
       }),
       headers: { 'Content-Type': 'application/json' }
