@@ -81,7 +81,7 @@ router.post('/', (req, res) => {
         password: req.body.password,
         description: req.body.description,
         impairment: req.body.impairment,
-        user_impairment: req.body.user_impairment
+        //user_impairment: req.body.user_impairment
     })
     .then(dbUserData => {
         req.session.save(() => {
