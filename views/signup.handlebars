@@ -91,17 +91,8 @@
         <input type="text" id="description-signup" placeholder="Enter Bio" />
       </div>
 
-    <label class="user-h4" for="impairment"> <b> Select an impairment you would like to see accommodations for: </b> </label>
-        <select id = "impairment-signup" onchange = "favImpair()" >  
-          <option> </option>  
-          <option> Hearing Impairment </option>  
-          <option> Vision Impairment </option>  
-          <option> Mobility Impairment </option>  
-          <option> Neurological Impairment </option> 
-          <option> Cognitive Impairment </option>
-          <option> Medical Impairment </option>
-          <option> Psychological Impairment </option>
-        </select>  
+    <label class="user-h4" for="impairment"> <b> Fill in any impairments you may have </b> </label>
+         <input type="text" id="impairment-signup" placeholder="Enter impairment" />
       {{!-- <label for="picture"><b>Select Profile Picture:</b></label>
           <input id="image-signup" type="file" name="profile_photo" placeholder="Photo" required="" capture> 
       <div> --}}
@@ -148,8 +139,8 @@
                 <option> Medical Impairment </option>
                 <option> Psychological Impairment </option>
               </select>  
-            <button type="submit">signup</button>
         </div>
+         <button type="submit">signup</button>
         </div>
     </div>
 </form>
@@ -202,3 +193,9 @@
     document.getElementById("favorite").value = mylist.options[mylist.selectedIndex].text;  
   }  
 </script> 
+<script>  
+  function favBImpair() {  
+    var mylist = document.getElementById("b-accommodations");  
+    document.getElementById("bfavorite").value = mylist.options[mylist.selectedIndex].text;  
+  }  
+</script>
