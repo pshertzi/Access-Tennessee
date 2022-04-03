@@ -25,7 +25,7 @@ This project is covered under the following license:
 <a name="contributing"></a>
 ## Contributing
 Currently accepting contributions from developers. Please email us (see information below).
-Here the video: [Access Tennessee functionality] (https://drive.google.com/file/d/1AkculKov3gLywEzlW_NL1WtkCPAdmrZ-/view?usp=sharing)
+Here the video: [Access Tennessee functionality](https://drive.google.com/file/d/1AkculKov3gLywEzlW_NL1WtkCPAdmrZ-/view?usp=sharing)
 <a name="questions"></a>
 ## Questions
 If you have any questions, feel free to reach out at: [Tanya's GitHub](https://github.com/tanyaleepr), [Ashley's Github](https://github.com/ashleyhodge) or [Paul's Github](https://github.com/pshertzi).
