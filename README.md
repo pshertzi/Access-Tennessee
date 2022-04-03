@@ -1,5 +1,8 @@
 ## Description
 Access Tennessee is an app that strives to make this state more accommodating and accessible to all people. By giving individuals the chance to rate and directly interact with businesses in the community about what accommodations are needed for specific types of impairments/ disabilities, we are giving people the chance to be heard and giving businesses the chance to improve and become more inclusive.
+
+<img src="Access Tennessee.gif" >
+
 ## Table of Contents
 - [Description](#description)
 - [Table of Contents](#table-of-contents)
